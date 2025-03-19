@@ -35,9 +35,9 @@ def handle_pending_battles():
     print("Handling pending battles...")
     while find_and_click('img/raid/raid_akasha_result.png', confidence=0.7):
         print("Clicked on a pending raid, collecting rewards...")
-        time.sleep(random.uniform(3, 4))
+        time.sleep(random.uniform(0.5, 2))
         find_and_click('img/button/button_back.png', confidence=0.8)
-        time.sleep(random.uniform(2, 3))
+        time.sleep(random.uniform(0.5, 2))
     find_and_click('img/button/button_back.png', confidence=0.8)
     print("Finished collecting pending rewards, returning to main list.")
 
@@ -77,9 +77,19 @@ def select_raid():
     print("Selecting the raid with the highest HP...")
     if find_and_click('img/raid/raid_akasha.png', confidence=0.7):
         print("Raid selected, waiting for OK button...")
+        time.sleep(0.3)
+        if find_and_click('img/asset/img_pending_battle.png', confidence=0.8):
+            print("Pending battle detected! Clicking OK...")
+            click_ok()
+            time.sleep(random.uniform(1.5, 3))
+            handle_pending_battles()
+            return main()
         while not find_and_click('img/button/button_ok.png', confidence=0.8):
             print("OK button not found, retrying...")
             time.sleep(0.5)
+        if find_and_click('img/asset/captcha.png', confidence=0.8):
+            print("⚠️ Captcha detected! Stopping bot...")
+            exit()
         print("OK button found! Entering battle...")
         time.sleep(random.uniform(1, 3))
         return True
@@ -230,7 +240,7 @@ def wait_for_battle():
 
 def main():
     while True:
-        handle_notifications()
+
         if select_raid():
             wait_for_battle()
         else:
