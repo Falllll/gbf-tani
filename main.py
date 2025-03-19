@@ -33,16 +33,16 @@ def find_and_click(target_path, confidence=0.8):
 
 def handle_pending_battles():
     print("Handling pending battles...")
-    while find_and_click('img/raid_akasha_result.png', confidence=0.7):
+    while find_and_click('img/raid/raid_akasha_result.png', confidence=0.7):
         print("Clicked on a pending raid, collecting rewards...")
         time.sleep(random.uniform(3, 4))
-        find_and_click('img/button_back.png', confidence=0.8)
+        find_and_click('img/button/button_back.png', confidence=0.8)
         time.sleep(random.uniform(2, 3))
-    find_and_click('img/button_back.png', confidence=0.8)
+    find_and_click('img/button/button_back.png', confidence=0.8)
     print("Finished collecting pending rewards, returning to main list.")
 
 def click_ok():
-    find_and_click('img/button_ok.png')
+    find_and_click('img/button/button_ok.png')
     time.sleep(random.uniform(1.5, 3))
 
 def handle_notifications():
@@ -56,15 +56,15 @@ def handle_notifications():
             print(message)
             click_ok()
             print("Refreshing the raid list...")
-            find_and_click('img/button_refresh.png', confidence=0.8)
+            find_and_click('img/button/button_refresh.png', confidence=0.8)
             time.sleep(random.uniform(1.5, 3))
 
-    if find_and_click('img/img_3_backup.png', confidence=0.8):
+    if find_and_click('img/asset/img_3_backup.png', confidence=0.8):
         print("Backup limit reached, waiting 1 minute...")
         click_ok()
         time.sleep(random.uniform(50, 60))
 
-    if find_and_click('img/img_pending_battle.png', confidence=0.8):
+    if find_and_click('img/asset/img_pending_battle.png', confidence=0.8):
         print("Pending battle detected! Clicking OK...")
         click_ok()
         time.sleep(random.uniform(1.5, 3))
@@ -75,9 +75,9 @@ def handle_notifications():
 
 def select_raid():
     print("Selecting the raid with the highest HP...")
-    if find_and_click('img/raid_akasha.png', confidence=0.7):
+    if find_and_click('img/raid/raid_akasha.png', confidence=0.7):
         print("Raid selected, waiting for OK button...")
-        while not find_and_click('img/button_ok.png', confidence=0.8):
+        while not find_and_click('img/button/button_ok.png', confidence=0.8):
             print("OK button not found, retrying...")
             time.sleep(0.5)
         print("OK button found! Entering battle...")
@@ -89,21 +89,21 @@ def select_raid():
 
 def refresh_raid():
     print("Refreshing the raid list...")
-    find_and_click('img/button_refresh.png', confidence=0.8)
+    find_and_click('img/button/button_refresh.png', confidence=0.8)
     time.sleep(random.uniform(0.5, 1))
 
 def wait_for_battle():
     print("Waiting for quick summon button...")
     while True:
-        if find_and_click('img/img_result_battle.png', confidence=0.8):
+        if find_and_click('img/asset/img_result_battle.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
-            find_and_click('img/bookmark.png', confidence=0.8)
+            find_and_click('img/asset/bookmark.png', confidence=0.8)
             return
-        if find_and_click('img/img_waiting_for_last_turn.png', confidence=0.8):
+        if find_and_click('img/asset/img_waiting_for_last_turn.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
             click_ok()
             continue
-        if find_and_click('img/button_quick.png', confidence=0.8):
+        if find_and_click('img/button/button_quick.png', confidence=0.8):
             print("Quick summon button not found, retrying...")
             time.sleep(0.5)
             break
@@ -113,21 +113,21 @@ def wait_for_battle():
     pyautogui.click()
     time.sleep(0.5)
     print("Clicking back button after quick summon...")
-    find_and_click('img/button_back.png', confidence=0.8)
+    find_and_click('img/button/button_back.png', confidence=0.8)
     time.sleep(random.uniform(1, 2))
 
     # Cek paralel antara avatar atau result battle
     print("Waiting for avatar or result...")
     while True:
-        if find_and_click('img/img_result_battle.png', confidence=0.8):
+        if find_and_click('img/asset/img_result_battle.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
-            find_and_click('img/bookmark.png', confidence=0.8)
+            find_and_click('img/asset/bookmark.png', confidence=0.8)
             return
-        if find_and_click('img/img_waiting_for_last_turn.png', confidence=0.8):
+        if find_and_click('img/asset/img_waiting_for_last_turn.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
             click_ok()
             continue
-        if find_and_click('img/avatar_y_ilsa.png', confidence=0.8):
+        if find_and_click('img/avatar/avatar_y_ilsa.png', confidence=0.8):
             print("Avatar found! Waiting 3 seconds...")
             time.sleep(2.3)
             pyautogui.click()
@@ -136,25 +136,25 @@ def wait_for_battle():
         time.sleep(0.5)
 
     print("Waiting for skill to appear...")
-    while not find_and_click('img/y_ilsa_s1.png', confidence=0.8):
+    while not find_and_click('img/skill/y_ilsa_s1.png', confidence=0.8):
         print("Skill not found, retrying...")
         time.sleep(0.5)
 
     print("Skill found, clicking!")
     time.sleep(0.5)
-    find_and_click('img/button_back.png', confidence=0.8)
+    find_and_click('img/button/button_back.png', confidence=0.8)
 
     print("Waiting for attack button...")
     while True:
-        if find_and_click('img/img_result_battle.png', confidence=0.8):
+        if find_and_click('img/asset/img_result_battle.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
-            find_and_click('img/bookmark.png', confidence=0.8)
+            find_and_click('img/asset/bookmark.png', confidence=0.8)
             return
-        if find_and_click('img/img_waiting_for_last_turn.png', confidence=0.8):
+        if find_and_click('img/asset/img_waiting_for_last_turn.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
             click_ok()
             continue
-        if find_and_click('img/button_attack.png', confidence=0.8):
+        if find_and_click('img/button/button_attack.png', confidence=0.8):
             print("Attack button found, clicking...")
             time.sleep(0.3)
             pyautogui.click()
@@ -164,40 +164,40 @@ def wait_for_battle():
         time.sleep(0.5)
 
     print("Clicking back after attack...")
-    find_and_click('img/button_back.png', confidence=0.8)
+    find_and_click('img/button/button_back.png', confidence=0.8)
     time.sleep(0.5)
 
     print("Waiting for summon...")
     while True:
-        if find_and_click('img/img_result_battle.png', confidence=0.8):
+        if find_and_click('img/asset/img_result_battle.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
-            find_and_click('img/bookmark.png', confidence=0.8)
+            find_and_click('img/asset/bookmark.png', confidence=0.8)
             return
-        if find_and_click('img/img_waiting_for_last_turn.png', confidence=0.8):
+        if find_and_click('img/asset/img_waiting_for_last_turn.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
             click_ok()
             continue
-        if find_and_click('img/img_summon.png', confidence=0.8):
+        if find_and_click('img/asset/img_summon.png', confidence=0.8):
             print("Summon button found, waiting 3 seconds...")
             time.sleep(2.3)
             pyautogui.click()
             time.sleep(0.5)
-            find_and_click('img/summon_zirnitra.png', confidence=0.8)
+            find_and_click('img/summon/summon_zirnitra.png', confidence=0.8)
             break
         print("Summon or result not found, retrying...")
         time.sleep(0.5)
 
     print("Waiting for OK button after summon...")
     while True:
-        if find_and_click('img/img_result_battle.png', confidence=0.8):
+        if find_and_click('img/asset/img_result_battle.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
-            find_and_click('img/bookmark.png', confidence=0.8)
+            find_and_click('img/asset/bookmark.png', confidence=0.8)
             return
-        if find_and_click('img/img_waiting_for_last_turn.png', confidence=0.8):
+        if find_and_click('img/asset/img_waiting_for_last_turn.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
             click_ok()
             continue
-        if find_and_click('img/button_ok.png', confidence=0.8):
+        if find_and_click('img/button/button_ok.png', confidence=0.8):
             print("OK button found, clicking...")
             pyautogui.click()
             break
@@ -205,25 +205,25 @@ def wait_for_battle():
         time.sleep(0.5)
 
     print("Clicking back after OK...")
-    find_and_click('img/button_back.png', confidence=0.8)
+    find_and_click('img/button/button_back.png', confidence=0.8)
     time.sleep(0.5)
 
     print("Final attack check...")
     while True:
-        if find_and_click('img/img_result_battle.png', confidence=0.8):
+        if find_and_click('img/asset/img_result_battle.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
-            find_and_click('img/bookmark.png', confidence=0.8)
+            find_and_click('img/asset/bookmark.png', confidence=0.8)
             return
-        if find_and_click('img/img_waiting_for_last_turn.png', confidence=0.8):
+        if find_and_click('img/asset/img_waiting_for_last_turn.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
             click_ok()
             continue
-        if find_and_click('img/button_attack.png', confidence=0.8):
+        if find_and_click('img/button/button_attack.png', confidence=0.8):
             print("Attack button found again, clicking...")
             time.sleep(0.3)
             pyautogui.  click()
             time.sleep(0.5)
-            find_and_click('img/bookmark.png', confidence=0.8)
+            find_and_click('img/asset/bookmark.png', confidence=0.8)
             break
         print("Attack button or result not found, retrying...")
         time.sleep(0.5)
