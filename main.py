@@ -148,7 +148,7 @@ def wait_for_battle():
             print("Result battle detected! Jumping to bookmark.")
             click_ok()
             continue
-        if find_and_click('img/avatar/avatar_y_ilsa.png', confidence=0.8):
+        if find_and_click('img/avatar/ilsa/y_ilsa.png', confidence=0.8):
             print("Avatar found! Waiting 3 seconds...")
             time.sleep(2.3)
             pyautogui.click()
@@ -157,7 +157,7 @@ def wait_for_battle():
         time.sleep(0.5)
 
     print("Waiting for skill to appear...")
-    while not find_and_click('img/skill/y_ilsa_s1.png', confidence=0.8):
+    while not find_and_click('img/skill/ilsa/dark_y_s1.png', confidence=0.8):
         print("Skill not found, retrying...")
         time.sleep(0.5)
 
@@ -167,10 +167,7 @@ def wait_for_battle():
 
     print("Waiting for attack button...")
     while True:
-        if find_and_click('img/asset/img_result_battle.png', confidence=0.8):
-            print("Result battle detected! Jumping to bookmark.")
-            find_and_click('img/asset/bookmark.png', confidence=0.8)
-            return
+
         if find_and_click('img/asset/img_waiting_for_last_turn.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
             click_ok()

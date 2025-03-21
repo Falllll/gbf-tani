@@ -3,6 +3,8 @@ import numpy as np
 import pyautogui
 import time
 import random
+import os
+# from skill import *
 
 
 # CORE SECTION
@@ -34,6 +36,10 @@ def find_and_click(target_path, confidence=0.8):
         print(f"{target_path} not found.")
         return False
 
+def find(image_path, confidence=0.8):
+    location = pyautogui.locateCenterOnScreen(image_path, confidence=confidence)
+    return location
+
 
 # Menghandle pending battle
 def handle_pending_battles(raid):
@@ -45,3 +51,20 @@ def handle_pending_battles(raid):
         time.sleep(random.uniform(0.5, 2))
     find_and_click('img/button/button_back.png', confidence=0.8)
     print("Finished collecting pending rewards, returning to main list.")
+
+def find_avatar(avatar):
+    avatar_folder = f'img/avatar/{avatar}/'
+    if not os.path.exists(avatar_folder):
+        print(f"Folder {avatar_folder} tidak ditemukan!")
+        return False
+
+    for file in os.listdir(avatar_folder):
+        if file.endswith(".png") and find_and_click(os.path.join(avatar_folder, file), confidence=0.72):
+            print(f"Avatar {file} found! Waiting 3 seconds...")
+            time.sleep(2.3)
+            pyautogui.click()
+            return True
+
+    print("Avatar not found, retrying...")
+    time.sleep(0.5)
+    return False
