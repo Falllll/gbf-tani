@@ -157,7 +157,7 @@ def wait_for_battle():
         time.sleep(0.5)
 
     print("Waiting for skill to appear...")
-    while not find_and_click('img/skill/ilsa/dark_y_s1.png', confidence=0.8):
+    while not find_and_click('img/skill/ilsa/dark_s1.png', confidence=0.8):
         print("Skill not found, retrying...")
         time.sleep(0.5)
 

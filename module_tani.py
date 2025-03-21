@@ -4,6 +4,7 @@ from sample import main
 # List nama raid
 raid_lu_woh = 'img/raid/raid_lu_woh.png'
 raid_lumi_m3 = 'img/raid/raid_lumi_credo.png'
+raid_gohl = 'img/raid/raid_gohl.png'
 
 # Memilih raid
 def select_raid(raid):
@@ -90,11 +91,14 @@ def quick_summon():
         if find_and_click('img/asset/img_waiting_for_last_turn.png', confidence=0.8):
             print("Result battle detected! Jumping to bookmark.")
             click_ok()
-            continue
+            return
         if find_and_click('img/button/button_quick.png', confidence=0.7) or find_and_click('img/button/button_quick_v2.png', confidence=0.7):
             print("Quick summon button not found, retrying...")
             time.sleep(0.5)
             break
+        if time.time() - start_time > 5:
+            print("Timeout reached: returning True")
+            return
 
     print("Quick summon button found! Waiting 3 seconds before clicking...")
     time.sleep(2.3)

@@ -151,6 +151,7 @@ def y_ilsa_1():
             print("Result battle detected! Jumping to bookmark.")
             click_ok()
             continue
+
         if find_avatar('ilsa'):
             break
         if time.time() - start_time > 5:
@@ -158,7 +159,7 @@ def y_ilsa_1():
             return
 
     print("Waiting for skill to appear...")
-    while not find_and_click('img/skill/ilsa/dark_y_s1.png', confidence=0.8):
+    while not find_and_click('img/skill/ilsa/dark_s1.png', confidence=0.8):
         print("Skill not found, retrying...")
         time.sleep(0.5)
 
