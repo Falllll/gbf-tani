@@ -1,5 +1,5 @@
 from core.page_checker import check_backup_request
-from core.event_handler import ensure_event_tab
+from core.raid_menu_handler import *
 from utils.config_utils import load_config
 
 def main():
@@ -10,6 +10,9 @@ def main():
 
         if first_mode == "event":
             ensure_event_tab()
+
+        if first_mode == "raid":
+            ensure_raid_tab()
 
 if __name__ == "__main__":
     main()

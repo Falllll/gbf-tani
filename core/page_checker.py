@@ -5,7 +5,7 @@ def check_backup_request(image_path="assets/page/backup_requests.png"):
     """Loop cek halaman backup raid sampai benar."""
     while True:
         screen = screenshot()
-        if match_template(screen, image_path):
+        if match_template(screen, image_path, preprocess=False):
             print("✅ Sudah di halaman backup")
             return True
         else:

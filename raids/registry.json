@@ -1,0 +1,10 @@
+{
+    "grand order": {
+        "id": "raid_100",
+        "source" : "assets/button/go.png"
+    },
+    "wings of terror": {
+        "id": "raid_101",
+        "source" : "assets/button/go.png"
+    }
+}
