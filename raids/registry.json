@@ -1,10 +1,212 @@
 {
     "grand order": {
         "id": "raid_100",
-        "source" : "assets/button/go.png"
-    },
-    "wings of terror": {
+        "source" : "assets/raids/raid_gon.png"
+    },"wings of terror": {
         "id": "raid_101",
-        "source" : "assets/button/go.png"
-    }
-}
+        "source" : "assets/raids/raid_bahan.png"
+    },"huanglong": {
+        "id": "raid_102",
+        "source" : "assets/raids/raid_hln.png"
+    },"qilin": {
+        "id": "raid_103",
+        "source" : "assets/raids/raid_qilin.png"
+    },"michael": {
+        "id": "raid_104",
+        "source" : "assets/raids/raid_michael.png"
+    },"gabriel": {
+        "id": "raid_105",
+        "source" : "assets/raids/raid_gabriel.png"
+    },"uriel": {
+        "id": "raid_106",
+        "source" : "assets/raids/raid_uriel.png"
+    },"raphael": {
+        "id": "raid_107",
+        "source" : "assets/raids/raid_raphael.png"
+    },"empyreal ascension": {
+        "id": "raid_108",
+        "source" : "assets/raids/raid_ubhn.png"
+    },"tiamat m1": {
+        "id": "raid_109",
+        "source" : "assets/raids/raid_tia_m1.png"
+    },"colo m1": {
+        "id": "raid_110",
+        "source" : "assets/raids/raid_colo_m1.png"
+    },"levi m1": {
+        "id": "raid_111",
+        "source" : "assets/raids/raid_levi_m1.png"
+    },"yugu m1": {
+        "id": "raid_112",
+        "source" : "assets/raids/raid_yugu_m1.png"
+    },"lumi m1": {
+        "id": "raid_113",
+        "source" : "assets/raids/raid_lumi_m1.png"
+    },"celes m1": {
+        "id": "raid_114",
+        "source" : "assets/raids/raid_celes_m1.png"
+    },"shiva": {
+        "id": "raid_115",
+        "source" : "assets/raids/raid_shiva.png"
+    },"europa": {
+        "id": "raid_116",
+        "source" : "assets/raids/raid_europa.png"
+    },"alexiel": {
+        "id": "raid_117",
+        "source" : "assets/raids/raid_alexiel.png"    
+    },"grimnir": {
+        "id": "raid_118",
+        "source" : "assets/raids/raid_grimnir.png"
+    },"metatron": {
+        "id": "raid_119",
+        "source" : "assets/raids/raid_metatron.png"
+    },"avatar": {
+        "id": "raid_120",
+        "source" : "assets/raids/raid_avatar.png"
+    },"rose queen": {
+        "id": "raid_121",
+        "source" : "assets/raids/raid_rosequeen.png"
+    },"atum": {
+        "id": "raid_122",
+        "source" : "assets/raids/raid_atum.png"
+    },"tefnut": {
+        "id": "raid_123",
+        "source" : "assets/raids/raid_tefnut.png"
+    },"bennu": {
+        "id": "raid_124",
+        "source" : "assets/raids/raid_bennu.png"
+    },"ra": {
+        "id": "raid_125",
+        "source" : "assets/raids/raid_ra.png"
+    },"horus": {
+        "id": "raid_126",
+        "source" : "assets/raids/raid_horus.png"
+    },"osiris": {
+        "id": "raid_127",
+        "source" : "assets/raids/raid_osiris.png"
+    },"tiamat malice": {
+        "id": "raid_128",
+        "source" : "assets/raids/raid_tia_mal.png"
+    },"leviathan malice": {
+        "id": "raid_129",
+        "source" : "assets/raids/raid_levi_mal.png"
+    },"phronesis": {
+        "id": "raid_130",
+        "source" : "assets/raids/raid_phronesis.png"
+    },"luminiera malice": {
+        "id": "raid_131",
+        "source" : "assets/raids/raid_lumi_mal.png"
+    },"anima-animus core": {
+        "id": "raid_132",
+        "source" : "assets/raids/raid_anicore.png"
+    },"legion void": {
+        "id": "raid_133",
+        "source" : "assets/raids/raid_legvoid.png"
+    },"huanglong & qilin": {
+        "id": "raid_134",
+        "source" : "assets/raids/raid_hlql.png"
+    },"dark rapture": {
+        "id": "raid_135",
+        "source" : "assets/raids/raid_faan.png"
+    },"the four primarch": {
+        "id": "raid_136",
+        "source" : "assets/raids/raid_4prim.png"
+    },"lindwurm": {
+        "id": "raid_137",
+        "source" : "assets/raids/raid_lindwurm.png"
+    },"tiamat m3": {
+        "id": "raid_138",
+        "source" : "assets/raids/raid_tia_m3.png"
+    },"colo m3": {
+        "id": "raid_139",
+        "source" : "assets/raids/raid_colo_m3.png"
+    },"levi m3": {
+        "id": "raid_140",
+        "source" : "assets/raids/raid_levi_m3.png"
+    },"yugu m3": {
+        "id": "raid_141",
+        "source" : "assets/raids/raid_yugu_m3.png"    
+    },"lumi m3": {
+        "id": "raid_142",
+        "source" : "assets/raids/raid_lumi_credo.png"
+    },"celes m3": {
+        "id": "raid_143",
+        "source" : "assets/raids/raid_celes_m3.png"
+    },"wilnas": {
+        "id": "raid_144",
+        "source" : "assets/raids/raid_wilnas.png"
+    },"wamdus": {
+        "id": "raid_145",
+        "source" : "assets/raids/raid_wamdus.png"
+    },"galleon": {
+        "id": "raid_146",
+        "source" : "assets/raids/raid_galleon.png"
+    },"ewiyar": {
+        "id": "raid_147",
+        "source" : "assets/raids/raid_ewiyar.png"
+    },"lu woh": {
+        "id": "raid_148",
+        "source" : "assets/raids/raid_lu_woh.png"
+    },"fediel": {
+        "id": "raid_149",
+        "source" : "assets/raids/raid_fediel.png"
+    },"proto bahamut hl": {
+        "id": "raid_150",
+        "source" : "assets/raids/raid_pbhl.png"
+    },"akasha": {
+        "id": "raid_151",
+        "source" : "assets/raids/raid_akasha.png"
+    },"grand order hl": {
+        "id": "raid_152",
+        "source" : "assets/raids/raid_gohl.png"
+    },"ultimate bahamut hl": {
+        "id": "raid_153",
+        "source" : "assets/raids/raid_ubhl.png"
+    },"dark rapture (hard)": {
+        "id": "raid_154",
+        "source" : "assets/raids/raid_faahl.png"
+    },"beelzebub": {
+        "id": "raid_155",
+        "source" : "assets/raids/raid_bubs.png"
+    },"belial": {
+        "id": "raid_156",
+        "source" : "assets/raids/raid_belial.png"
+    },"the world": {
+        "id": "raid_157",
+        "source" : "assets/raids/raid_theworld.png"
+    },"mugen": {
+        "id": "raid_158",
+        "source" : "assets/raids/raid_mugen.png"
+    },"diaspora": {
+        "id": "raid_159",
+        "source" : "assets/raids/raid_dias.png"
+    },"siegfried": {
+        "id": "raid_160",
+        "source" : "assets/raids/raid_sieg.png"
+    },"seofon": {
+        "id": "raid_161",
+        "source" : "assets/raids/raid_seofon.png"
+    },"cosmos": {
+        "id": "raid_162",
+        "source" : "assets/raids/raid_cosmos.png"
+    },"agastia": {
+        "id": "raid_163",
+        "source" : "assets/raids/raid_agas.png"
+    },"martial mastery trial": {
+        "id": "raid_164",
+        "source" : "assets/raids/raid_martrial.png"
+    },"esoteric mastery trial": {
+        "id": "raid_165",
+        "source" : "assets/raids/raid_esotrial.png"
+    },"virtuosic mastery trial": {
+        "id": "raid_166",
+        "source" : "assets/raids/raid_virtrial.png"
+    },"super ultimate bahamut": {
+        "id": "raid_167",
+        "source" : "assets/raids/raid_subaha.png"
+    },"hexachromatic hierarch": {
+        "id": "raid_168",
+        "source" : "assets/raids/raid_hexa.png"
+    },"dark rapture zero": {
+        "id": "raid_169",
+        "source" : "assets/raids/raid_faa0.png"
+}}
