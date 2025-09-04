@@ -170,6 +170,15 @@ def ensure_raid_tab():
             # ✅ kalau udah sampai sini berarti summon aman → keluar ke main.py
             return True
         else:
+            # 🔄 coba klik tombol reload dulu
+            reload_btn = "assets/button/reload.png"
+            if match_template(screen, reload_btn, threshold=0.7, preprocess=True):
+                print("🔄 Tombol reload ditemukan, klik untuk refresh layar...")
+                click_image_fullscreen(reload_btn, threshold=0.7)
+                time.sleep(2)
+                continue  # skip increment fail_count, langsung ulangi loop
+
+            # kalau reload gak ada → baru dianggap gagal
             fail_count += 1
             print(f"⚠️ Raid tidak dikenali di layar (score < threshold / asset beda), ulangi... ({fail_count}/10)")
             time.sleep(2)
