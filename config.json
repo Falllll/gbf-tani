@@ -1,4 +1,5 @@
 {
-    "raid_id": "123ABC",
-    "mode": "event,raid"
+    "raid_id": "raid_163",
+    "mode": "raid,event",
+    "hp_priority": "highest"
 }

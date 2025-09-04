@@ -1,6 +1,8 @@
 from core.page_checker import check_backup_request
 from core.raid_menu_handler import *
+from core.battle import handle_battle
 from utils.config_utils import load_config
+
 
 def main():
     print("🚀 Bot start...")
@@ -13,6 +15,9 @@ def main():
 
         if first_mode == "raid":
             ensure_raid_tab()
+
+        handle_battle()
+
 
 if __name__ == "__main__":
     main()

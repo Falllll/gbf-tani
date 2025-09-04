@@ -1,3 +1,4 @@
+#image_utils.py
 import cv2
 import numpy as np
 import pyautogui
@@ -42,22 +43,22 @@ def match_template(screen, template_path, threshold=0.7, return_coords=False,
     res = cv2.matchTemplate(screen_proc, template_proc, cv2.TM_CCOEFF_NORMED)
     _, max_val, _, max_loc = cv2.minMaxLoc(res)
 
-    if debug:
-        print(f"[DEBUG] {os.path.basename(template_path)} score={max_val:.3f} (threshold={threshold})")
+    # if debug:
+        # print(f"[DEBUG] {os.path.basename(template_path)} score={max_val:.3f} (threshold={threshold})")
 
     if max_val >= threshold:
         h, w = template.shape
         cx = max_loc[0] + w // 2
         cy = max_loc[1] + h // 2
 
-        if reject_dark:
-            is_dark, avg_brightness = is_dark_region(screen, (cx, cy), return_brightness=True)
-            if debug:
-                print(f"[DEBUG] brightness={avg_brightness:.1f} @ {template_path}")
-            if is_dark:
-                if debug:
-                    print(f"[DEBUG] {os.path.basename(template_path)} REJECT karena dark region")
-                return False
+        # if reject_dark:
+        #     is_dark, avg_brightness = is_dark_region(screen, (cx, cy), return_brightness=True)
+        #     if debug:
+        #         print(f"[DEBUG] brightness={avg_brightness:.1f} @ {template_path}")
+        #     if is_dark:
+        #         if debug:
+        #             print(f"[DEBUG] {os.path.basename(template_path)} REJECT karena dark region")
+        #         return False
 
         if return_coords:
             return (cx, cy, max_val)
@@ -128,3 +129,31 @@ def test_templates(templates, threshold=0.7, debug=True):
     screen = screenshot()
     for tpl in templates:
         match_template(screen, tpl, threshold=threshold, debug=debug)
+
+def click_coords(cx, cy, move_duration=0.1):
+    pyautogui.moveTo(cx, cy, duration=move_duration)
+    pyautogui.click()
+
+def click_image_fullscreen(image_path, threshold=0.7, move_duration=0.1, debug=False):
+    screen = screenshot()
+    gray_screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
+
+    template = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+    if template is None:
+        raise FileNotFoundError(f"Template {image_path} tidak ditemukan.")
+
+    res = cv2.matchTemplate(gray_screen, template, cv2.TM_CCOEFF_NORMED)
+    _, max_val, _, max_loc = cv2.minMaxLoc(res)
+
+    if debug:
+        print(f"[DEBUG] click_image_fullscreen {os.path.basename(image_path)} score={max_val:.3f}")
+
+    if max_val < threshold:
+        return False
+
+    th, tw = template.shape[:2]
+    cx, cy = max_loc[0] + tw // 2, max_loc[1] + th // 2
+
+    pyautogui.moveTo(cx, cy, duration=move_duration)
+    pyautogui.click()
+    return True
