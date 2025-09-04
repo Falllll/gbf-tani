@@ -10,13 +10,14 @@ def main():
         cfg = load_config()
         first_mode = cfg.get("mode", "raid").split(",")[0].strip().lower()
 
-        if first_mode == "event":
-            ensure_event_tab()
+        while True:
+            if first_mode == "event":
+                ensure_event_tab()
 
-        if first_mode == "raid":
-            ensure_raid_tab()
+            if first_mode == "raid":
+                ensure_raid_tab()
 
-        handle_battle()
+            handle_battle()
 
 
 if __name__ == "__main__":
