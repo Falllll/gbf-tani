@@ -1,6 +1,6 @@
 #page_checker.py
 import time
-from utils.image_utils import screenshot, match_template
+from utils.image_utils import screenshot, match_template, click_image_fullscreen
 
 def check_backup_request(image_path="assets/page/backup_requests.png"):
     """Loop cek halaman backup raid sampai benar."""
@@ -21,5 +21,7 @@ def check_select_summon(image_path="assets/button/drop_items.png"):
             print("✅ Sudah di halaman select summon")
             return True
         else:
-            print("❌ Tidak berada di halaman select summon")
+            print("❌ Tidak berada di halaman select summon, balik bookmark...")
+            click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
             time.sleep(2)
+            return False

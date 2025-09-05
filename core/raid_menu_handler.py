@@ -107,17 +107,12 @@ def ensure_raid_tab():
                 "battle_full": "assets/page/img_raid_battle_full.png"
             }
 
-            popup_detected = False
             for name, img in popups.items():
                 if match_template(popup_screen, img, threshold=0.7, preprocess=True, reject_dark=False, debug=True):
                     print(f"⚠️ Popup terdeteksi: {name}")
-                    popup_detected = True
                     # klik OK/bookmark
                     click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
-                    break
-
-            if popup_detected:
-                continue  # skip loop, balik cari raid lagi
+                    return False  # ⬅️ balik ke loop utama
 
             # --- cek popup pending battle (beda penanganan) ---
             pending_battle_img = "assets/page/img_pending_battle.png"
@@ -125,13 +120,14 @@ def ensure_raid_tab():
                               debug=True):
                 print("⚠️ Popup pending battle terdeteksi")
                 handling_pending_battle()
-                continue
+                return False
 
 
 
             time.sleep(1)
             # ✅ kalau ga ada popup, lanjut ke summon
-            check_select_summon()
+            if not check_select_summon():
+                return False
             print(f"✅ Klik ok")
             click_image_fullscreen("assets/button/button_ok.png", threshold=0.7)
 
@@ -147,17 +143,13 @@ def ensure_raid_tab():
                 "battle_full": "assets/page/img_raid_battle_full.png"
             }
 
-            popup_detected = False
+            print(f"✅ Check Pop up setelah summon OK")
             for name, img in popups.items():
                 if match_template(popup_screen, img, threshold=0.7, preprocess=True, reject_dark=False, debug=True):
                     print(f"⚠️ Popup terdeteksi setelah summon OK: {name}")
-                    popup_detected = True
-                    # klik OK/bookmark
                     click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
-                    return True
+                    return False  # ⬅️ balik ke loop utama
 
-            if popup_detected:
-                continue  # skip loop, balik cari raid lagi
 
             # --- cek popup pending battle (beda penanganan) ---
             pending_battle_img = "assets/page/img_pending_battle.png"
@@ -168,10 +160,9 @@ def ensure_raid_tab():
                 continue
 
             pending_battle_img = "assets/page/captcha.png"
-            if match_template(popup_screen, pending_battle_img, threshold=0.4, preprocess=True, reject_dark=False,
+            if match_template(popup_screen, pending_battle_img, threshold=0.5, preprocess=True, reject_dark=False,
                               debug=True):
-                print("⚠️ Popup pending battle terdeteksi setelah summon OK")
-                handling_pending_battle()
+                print("⚠️ CAPTCHA TERDETEKSI HENTIKAN PROGRAM!!!")
                 exit()
 
             # ✅ kalau udah sampai sini berarti summon aman → keluar ke main.py

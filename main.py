@@ -12,10 +12,14 @@ def main():
 
         while True:
             if first_mode == "event":
-                ensure_event_tab()
+                ok = ensure_event_tab()
+                if not ok:
+                    continue
 
             if first_mode == "raid":
-                ensure_raid_tab()
+                ok = ensure_raid_tab()
+                if not ok:
+                    continue
 
             handle_battle()
 

@@ -26,7 +26,7 @@ def handling_pending_battle():
         if not raids:
             print("✅ Tidak ada raid pending lagi, keluar dari handling_pending_battle")
             click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
-            break
+            return True
 
         # klik raid pending
         cx, cy, score = raids
