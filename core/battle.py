@@ -52,6 +52,8 @@ def handle_battle():
         # tunggu sampai tombol attack hilang
         while True:
             screen = screenshot()
+            time.sleep(1)
+            print("test")
 
             # cek kalau tombol attack masih ada
             if not match_template(screen, "assets/button/attack.png", threshold=0.5, preprocess=True):
@@ -59,7 +61,11 @@ def handle_battle():
                 break
 
             # cek kalau battle end muncul
-            if match_template(screen, "assets/button/battle_end.png", threshold=0.7, preprocess=True):
+            if match_template(screen, "assets/button/battle_end.png", threshold=0.5, preprocess=True):
+                print("⚠️ Battle End terdeteksi → klik bookmark dan keluar")
+                click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                return True
+            if match_template(screen, "assets/button/dead.png", threshold=0.5, preprocess=True):
                 print("⚠️ Battle End terdeteksi → klik bookmark dan keluar")
                 click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
                 return True
