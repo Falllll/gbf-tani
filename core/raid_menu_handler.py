@@ -167,6 +167,13 @@ def ensure_raid_tab():
                 handling_pending_battle()
                 continue
 
+            pending_battle_img = "assets/page/captcha.png"
+            if match_template(popup_screen, pending_battle_img, threshold=0.4, preprocess=True, reject_dark=False,
+                              debug=True):
+                print("⚠️ Popup pending battle terdeteksi setelah summon OK")
+                handling_pending_battle()
+                exit()
+
             # ✅ kalau udah sampai sini berarti summon aman → keluar ke main.py
             return True
         else:
