@@ -186,3 +186,67 @@ def ensure_raid_tab():
                 click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
                 fail_count = 0  # reset counter
                 continue
+
+def ensure_solo_tab():
+    """Pastikan sudah di tab Solo dengan cek auto_select.png, lalu handle summon & popup."""
+    print("ℹ️ Cek tab Solo...")
+    fail_count = 0
+
+    while True:
+        screen = screenshot()
+
+        # cek apakah sudah di tab Solo
+        if match_template(screen, "assets/button/auto_select.png", threshold=0.5, preprocess=True):
+            print("✅ Sudah di tab Solo")
+            time.sleep(1)
+
+            # # ✅ kalau ga ada popup, lanjut ke summon
+            # if not check_select_summon():
+            #     return False
+
+            print("✅ Klik OK")
+            click_image_fullscreen("assets/button/button_ok.png", threshold=0.7)
+
+            # 🔍 setelah klik OK summon, cek popup
+            time.sleep(1.5)
+            popup_screen = screenshot()
+
+            print("✅ Check Pop up setelah summon OK")
+            popups = {
+                "battle_ended": "assets/page/img_raid_battle_ended.png",
+                "backup_3": "assets/page/img_3_backup.png",
+                "battle_full": "assets/page/img_raid_battle_full.png"
+            }
+
+            for name, img in popups.items():
+                if match_template(popup_screen, img, threshold=0.7, preprocess=True, reject_dark=False, debug=True):
+                    print(f"⚠️ Popup terdeteksi setelah summon OK: {name}")
+                    click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                    return False  # balik ke loop utama
+
+            # --- cek popup pending battle
+            pending_battle_img = "assets/page/img_pending_battle.png"
+            if match_template(popup_screen, pending_battle_img, threshold=0.4, preprocess=True, reject_dark=False, debug=True):
+                print("⚠️ Popup pending battle terdeteksi setelah summon OK")
+                handling_pending_battle()
+                continue
+
+            # --- cek captcha
+            captcha_img = "assets/page/captcha.png"
+            if match_template(popup_screen, captcha_img, threshold=0.5, preprocess=True, reject_dark=False, debug=True):
+                print("⚠️ CAPTCHA TERDETEKSI HENTIKAN PROGRAM!!!")
+                exit()
+
+            # ✅ kalau sampai sini berarti aman
+            return True
+
+        # belum di tab Solo
+        fail_count += 1
+        print(f"⚠️ Belum di tab Solo ({fail_count}/10)")
+        time.sleep(1.5)
+
+        if fail_count >= 10:
+            print("❌ Gagal deteksi tab Solo 10x, klik bookmark untuk refresh...")
+            click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+            fail_count = 0
+            continue

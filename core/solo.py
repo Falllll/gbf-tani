@@ -3,7 +3,7 @@
 import time
 from utils.image_utils import screenshot, match_template, click_image_fullscreen
 
-def handle_battle():
+def handle_solo_battle():
     """
     Handle battle flow:
     1. Tunggu 1 detik, cek tombol auto.
