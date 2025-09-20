@@ -1,6 +1,6 @@
 #popup.py
 import time
-from utils.image_utils import screenshot, match_template
+from utils.screenshot import screenshot, match_template
 
 # def battle_ended(image_path="assets/page/img_raid_battle_ended.png"):
 

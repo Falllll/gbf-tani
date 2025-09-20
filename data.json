@@ -1,0 +1,704 @@
+{
+    "raid_list": [
+        {
+            "id": 100,
+            "name": "Grand Order",
+            "source": "assets/raids/raid_gon.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "standard"
+        },
+        {
+            "id": 101,
+            "name": "Wings Of Terror",
+            "source": "assets/raids/raid_bahan.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "standard"
+        },
+        {
+            "id": 102,
+            "name": "Huanglong",
+            "source": "assets/raids/raid_hln.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "standard"
+        },
+        {
+            "id": 103,
+            "name": "Qilin",
+            "source": "assets/raids/raid_qilin.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "standard"
+        },
+        {
+            "id": 104,
+            "name": "Michael",
+            "source": "assets/raids/raid_michael.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "standard"
+        },
+        {
+            "id": 105,
+            "name": "Gabriel",
+            "source": "assets/raids/raid_gabriel.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "standard"
+        },
+        {
+            "id": 106,
+            "name": "Uriel",
+            "source": "assets/raids/raid_uriel.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "standard"
+        },
+        {
+            "id": 107,
+            "name": "Raphael",
+            "source": "assets/raids/raid_raphael.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "standard"
+        },
+        {
+            "id": 108,
+            "name": "Ultimate Bahamut",
+            "source": "assets/raids/raid_ubhn.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "standard"
+        },
+        {
+            "id": 109,
+            "name": "Tiamat M1",
+            "source": "assets/raids/raid_tia_m1.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 110,
+            "name": "Colo M1",
+            "source": "assets/raids/raid_colo_m1.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 111,
+            "name": "Levi M1",
+            "source": "assets/raids/raid_levi_m1.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 6,
+            "type": "impossible"
+        },
+        {
+            "id": 112,
+            "name": "Yugu M1",
+            "source": "assets/raids/raid_yugu_m1.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 6,
+            "type": "impossible"
+        },
+        {
+            "id": 113,
+            "name": "Lumi M1",
+            "source": "assets/raids/raid_lumi_m1.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 6,
+            "type": "impossible"
+        },
+        {
+            "id": 114,
+            "name": "Celes M1",
+            "source": "assets/raids/raid_celes_m1.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 6,
+            "type": "impossible"
+        },
+        {
+            "id": 115,
+            "name": "Shiva",
+            "source": "assets/raids/raid_shiva.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 116,
+            "name": "Europa",
+            "source": "assets/raids/raid_europa.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 117,
+            "name": "Alexiel",
+            "source": "assets/raids/raid_alexiel.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 118,
+            "name": "Grimnir",
+            "source": "assets/raids/raid_grimnir.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 119,
+            "name": "Metatron",
+            "source": "assets/raids/raid_metatron.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 120,
+            "name": "Avatar",
+            "source": "assets/raids/raid_avatar.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 121,
+            "name": "Rose Queen",
+            "source": "assets/raids/raid_rosequeen.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 122,
+            "name": "Atum",
+            "source": "assets/raids/raid_atum.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 123,
+            "name": "Tefnut",
+            "source": "assets/raids/raid_tefnut.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 124,
+            "name": "Bennu",
+            "source": "assets/raids/raid_bennu.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 125,
+            "name": "Ra",
+            "source": "assets/raids/raid_ra.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 126,
+            "name": "Horus",
+            "source": "assets/raids/raid_horus.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 127,
+            "name": "Osiris",
+            "source": "assets/raids/raid_osiris.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 128,
+            "name": "Tiamat Malice",
+            "source": "assets/raids/raid_tia_mal.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 129,
+            "name": "Leviathan Malice",
+            "source": "assets/raids/raid_levi_mal.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 130,
+            "name": "Phronesis",
+            "source": "assets/raids/raid_phronesis.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 131,
+            "name": "Luminiera Malice",
+            "source": "assets/raids/raid_lumi_mal.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 132,
+            "name": "Anima-Animus Core",
+            "source": "assets/raids/raid_anicore.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 133,
+            "name": "Legion Void",
+            "source": "assets/raids/raid_legvoid.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 134,
+            "name": "Huanglong & Qilin",
+            "source": "assets/raids/raid_hlql.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 135,
+            "name": "Dark Rapture",
+            "source": "assets/raids/raid_faan.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 136,
+            "name": "The Four Primarch",
+            "source": "assets/raids/raid_4prim.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 137,
+            "name": "Lindwurm",
+            "source": "assets/raids/raid_lindwurm.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 138,
+            "name": "Tiamat M3",
+            "source": "assets/raids/raid_tia_m3.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 139,
+            "name": "Colo M3",
+            "source": "assets/raids/raid_colo_m3.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 140,
+            "name": "Levi M3",
+            "source": "assets/raids/raid_levi_m3.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 141,
+            "name": "Yugu M3",
+            "source": "assets/raids/raid_yugu_m3.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 142,
+            "name": "Lumi M3",
+            "source": "assets/raids/raid_lumi_credo.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 143,
+            "name": "Celes M3",
+            "source": "assets/raids/raid_celes_m3.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 144,
+            "name": "Wilnas",
+            "source": "assets/raids/raid_wilnas.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 145,
+            "name": "Wamdus",
+            "source": "assets/raids/raid_wamdus.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 146,
+            "name": "Galleon",
+            "source": "assets/raids/raid_galleon.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 147,
+            "name": "Ewiyar",
+            "source": "assets/raids/raid_ewiyar.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 148,
+            "name": "Lu Woh",
+            "source": "assets/raids/raid_lu_woh.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 149,
+            "name": "Fediel",
+            "source": "assets/raids/raid_fediel.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 150,
+            "name": "Proto Bahamut HL",
+            "source": "assets/raids/raid_pbhl.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 151,
+            "name": "Akasha",
+            "source": "assets/raids/raid_akasha.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 152,
+            "name": "Grand Order HL",
+            "source": "assets/raids/raid_gohl.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 153,
+            "name": "Ultimate Bahamut HL",
+            "source": "assets/raids/raid_ubhl.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 154,
+            "name": "Dark Rapture (Hard)",
+            "source": "assets/raids/raid_faahl.png",
+            "mode": "v1",
+            "grid": "",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 155,
+            "name": "Beelzebub",
+            "source": "assets/raids/raid_bubs.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 156,
+            "name": "Belial",
+            "source": "assets/raids/raid_belial.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 157,
+            "name": "The World",
+            "source": "assets/raids/raid_theworld.png",
+            "mode": "v2",
+            "grid": "",
+            "intro": false,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 158,
+            "name": "Mugen",
+            "source": "assets/raids/raid_mugen.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 159,
+            "name": "Diaspora",
+            "source": "assets/raids/raid_dias.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 160,
+            "name": "Siegfried",
+            "source": "assets/raids/raid_sieg.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 18,
+            "type": "standard"
+        },
+        {
+            "id": 161,
+            "name": "Seofon",
+            "source": "assets/raids/raid_seofon.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 18,
+            "type": "standard"
+        },
+        {
+            "id": 162,
+            "name": "Cosmos",
+            "source": "assets/raids/raid_cosmos.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 18,
+            "type": "standard"
+        },
+        {
+            "id": 163,
+            "name": "Agastia",
+            "source": "assets/raids/raid_agas.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 164,
+            "name": "Martial Mastery Trial",
+            "source": "assets/raids/raid_martrial.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 6,
+            "type": "impossible"
+        },
+        {
+            "id": 165,
+            "name": "Esoteric Mastery Trial",
+            "source": "assets/raids/raid_esotrial.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 6,
+            "type": "impossible"
+        },
+        {
+            "id": 166,
+            "name": "Virtuosic Mastery Trial",
+            "source": "assets/raids/raid_virtrial.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 6,
+            "type": "impossible"
+        },
+        {
+            "id": 167,
+            "name": "Super Ultimate Bahamut",
+            "source": "assets/raids/raid_subaha.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": false,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 168,
+            "name": "Hexachromatic Hierarch",
+            "source": "assets/raids/raid_hexa.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 169,
+            "name": "Dark Rapture Zero",
+            "source": "assets/raids/raid_faa0.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 30,
+            "type": "impossible"
+        }
+    ]
+}

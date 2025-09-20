@@ -1,7 +1,7 @@
 # from core.pop_up import battle_ended
-from utils.image_utils import screenshot, match_template, click_image, click_coords, click_image_fullscreen
+from utils.screenshot import screenshot, match_template, click_image, click_coords, click_image_fullscreen
 from core.page_checker import check_select_summon
-from utils.config_utils import get_config, load_registry, get_raid_source_by_id
+from utils.config import get_config, load_registry, get_raid_source_by_id
 from core.pending_battle import handling_pending_battle
 import time
 
@@ -111,7 +111,9 @@ def ensure_raid_tab():
                 if match_template(popup_screen, img, threshold=0.7, preprocess=True, reject_dark=False, debug=True):
                     print(f"⚠️ Popup terdeteksi: {name}")
                     # klik OK/bookmark
-                    click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                    click_image_fullscreen("assets/button/reload.png", threshold=0.7)
+                    time.sleep(0.5)
+                    click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                     return False  # ⬅️ balik ke loop utama
 
             # --- cek popup pending battle (beda penanganan) ---
@@ -147,7 +149,7 @@ def ensure_raid_tab():
             for name, img in popups.items():
                 if match_template(popup_screen, img, threshold=0.7, preprocess=True, reject_dark=False, debug=True):
                     print(f"⚠️ Popup terdeteksi setelah summon OK: {name}")
-                    click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                    click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                     return False  # ⬅️ balik ke loop utama
 
 
@@ -183,7 +185,7 @@ def ensure_raid_tab():
 
             if fail_count >= 10:
                 print("❌ Raid gagal terdeteksi 10x, klik bookmark lalu ulangi pencarian...")
-                click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                 fail_count = 0  # reset counter
                 continue
 
@@ -221,7 +223,7 @@ def ensure_solo_tab():
             for name, img in popups.items():
                 if match_template(popup_screen, img, threshold=0.7, preprocess=True, reject_dark=False, debug=True):
                     print(f"⚠️ Popup terdeteksi setelah summon OK: {name}")
-                    click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                    click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                     return False  # balik ke loop utama
 
             # --- cek popup pending battle
@@ -247,6 +249,6 @@ def ensure_solo_tab():
 
         if fail_count >= 10:
             print("❌ Gagal deteksi tab Solo 10x, klik bookmark untuk refresh...")
-            click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+            click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
             fail_count = 0
             continue

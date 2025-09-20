@@ -1,7 +1,7 @@
 # core/battle.py
 
 import time
-from utils.image_utils import screenshot, match_template, click_image_fullscreen
+from utils.screenshot import screenshot, match_template, click_image_fullscreen
 
 def handle_solo_battle():
     """
@@ -25,7 +25,7 @@ def handle_solo_battle():
         if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.7, preprocess=True) or
             match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.7, preprocess=True)):
             print("✅ Battle selesai, result screen muncul")
-            click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+            click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
             return True
 
         # cek tombol auto
@@ -37,7 +37,7 @@ def handle_solo_battle():
 
             if fail_count >= 10:
                 print("❌ Auto gagal ditemukan 10x, klik bookmark lalu keluar")
-                click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                 return True
 
             continue
@@ -63,15 +63,15 @@ def handle_solo_battle():
             # cek kalau battle end muncul
             if match_template(screen, "assets/button/battle_end.png", threshold=0.5, preprocess=True):
                 print("⚠️ Battle End terdeteksi → klik bookmark dan keluar")
-                click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                 return True
             if match_template(screen, "assets/button/battle_end_time.png", threshold=0.5, preprocess=True):
                 print("⚠️ Battle End terdeteksi → klik bookmark dan keluar")
-                click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                 return True
             if match_template(screen, "assets/button/dead.png", threshold=0.5, preprocess=True):
                 print("⚠️ Battle End terdeteksi → klik bookmark dan keluar")
-                click_image_fullscreen("assets/page/bookmark.png", threshold=0.7)
+                click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                 return True
 
             time.sleep(0.5)
