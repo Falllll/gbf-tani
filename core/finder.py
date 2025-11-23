@@ -79,11 +79,32 @@ def select_raid():
                 print("⚠️ CAPTCHA TERDETEKSI → hentikan program.")
                 exit()
 
+            screen = screenshot()
+
+            if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.6, preprocess=True) or
+                    match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.6, preprocess=True)):
+                print("✅ Battle selesai, result screen muncul")
+                click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
+                return True
+
             handle_battle()
 
         else:
             if button_refresh():
                 continue
+
+            popup_screen = screenshot()
+            print("✅ Check Pop up")
+
+            popup_name = check_common_popups(popup_screen, debug=True)
+            if popup_name:
+                return handle_common_popup_action(popup_name)
+
+            if check_pending_battle(popup_screen, debug=True):
+                print("⚠️ Pending battle terdeteksi → menjalankan handler.")
+                handling_pending_battle(debug=True)
+                return False
+
             fail_count += 1
             print(f"⚠️ Raid tidak dikenali (percobaan {fail_count}/10), ulangi…")
             time.sleep(2)

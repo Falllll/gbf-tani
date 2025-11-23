@@ -1,5 +1,5 @@
 {
-    "raid_id": 154,
-    "mode": "finder,event,solo",
-    "setup": "fa,manual"
+    "raid_id": 166,
+    "mode": "solo,finder,event,solo",
+    "setup": "fa,manual,fa"
 }

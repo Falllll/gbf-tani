@@ -281,8 +281,22 @@ def click_summon_index(summon_index, debug=False):
     return True
 
 def click_quick_summon_button(debug=False):
-    """Klik tombol summon di sidebar (assets/party/summon.png)."""
-    return click_image_fullscreen("assets/button/quick_summon.png", threshold=0.8, debug=debug)
+    """
+    Klik tombol summon cepat (bisa quick_summon.png atau quick_summon2.png).
+    """
+    paths = [
+        "assets/button/quick_summon.png",
+        "assets/button/quick_summon2.png"
+    ]
+
+    for path in paths:
+        result = click_image_fullscreen(path, threshold=0.8, debug=debug)
+        if result:  # ✅ kalau berhasil klik salah satu langsung return
+            return result
+
+    if debug:
+        print("[DEBUG] quick_summon button tidak ditemukan")
+    return None
 
 def click_auto_button(debug=False):
     """Klik tombol summon di sidebar (assets/party/summon.png)."""

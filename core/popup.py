@@ -3,14 +3,14 @@ from utils.screenshot import match_template, click_image_fullscreen
 # Konfigurasi popup umum
 POPUPS = {
     "battle_ended": "assets/page/img_raid_battle_ended.png",
-    "backup_3": "assets/page/img_3_backup.png",
+    "backup_3": "assets/page/popup.png",
     "battle_full": "assets/page/img_raid_battle_full.png",
 }
 
 PENDING_BATTLE_IMG = "assets/page/img_pending_battle.png"
 CAPTCHA_IMG = "assets/page/captcha.png"
 
-def check_common_popups(screen, threshold=0.7, debug=False):
+def check_common_popups(screen, threshold=0.6, debug=False):
     """
     Mengecek popup umum (raid ended, backup 3, battle full).
     Return nama popup jika terdeteksi, None jika tidak ada.

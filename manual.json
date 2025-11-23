@@ -12,34 +12,15 @@
   },
   "steps": [
       {
-        "action": "select_character",
-        "target": "4th"
+        "action": "quick_summon"
       },
       {
-        "action": "use_skill",
-        "skill_index": 3
-      },
-    {
-      "action": "quick_summon"
-    },
-          {
         "action": "auto"
-      },
-          {
-        "action": "auto"
-      },
-          {
-        "action": "select_character",
-        "target": "1st"
       },
       {
-        "action": "use_skill",
-        "target": "3rd",
-        "skill_index": 3
+        "action": "attack"
       },
-              {
-        "action": "auto"
-      },          {
+      {
         "action": "attack"
       }
   ]
