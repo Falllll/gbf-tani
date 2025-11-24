@@ -3,6 +3,8 @@ import time
 from utils.variable import *
 from utils.screenshot import *
 from core.finder import select_raid
+from core.battle import fa
+from core.popup import check_captcha
 
 def check_tab(mode: str) -> bool:
     if mode == "finder":
@@ -13,6 +15,18 @@ def check_tab(mode: str) -> bool:
 
             if match_template(screen, page_backup_solo, preprocess=False):
                 print("✅ Sudah di halaman solo")
+                click_ok_button()
+                time.sleep(1)
+
+                screen = screenshot()
+                if check_captcha(screen, debug=True):
+                    print("⚠️ CAPTCHA terdeteksi, hentikan program.")
+                    exit()
+
+                if wait_for_auto_button(timeout=30, interval=0.5, debug=False):
+                    fa()
+                else:
+                    print("⚠️ Tombol auto tidak muncul setelah klik OK")
                 return True
             if match_template(screen, page_senbok, preprocess=False):
                 print("✅ Sudah di halaman senbok")

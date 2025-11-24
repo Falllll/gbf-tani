@@ -308,7 +308,7 @@ def click_back_button(debug=False):
 
 def click_ok_button(debug=False):
     """Klik tombol summon di sidebar (assets/party/summon.png)."""
-    return click_image_fullscreen("assets/button/ok.png", threshold=0.8, debug=debug)
+    return click_image_fullscreen("assets/button/button_ok.png", threshold=0.8, debug=debug)
 
 def wait_for_auto_button(timeout=30, interval=0.5, debug=False):
     """

@@ -79,7 +79,7 @@ def fa():
         start_time = time.time()  # mulai hitung waktu
         while True:
             screen = screenshot()
-            time.sleep(1)
+            time.sleep(0.3)
 
             # cek kalau tombol attack masih ada
             if not match_template(screen, "assets/button/attack.png", threshold=0.5, preprocess=True):
@@ -111,7 +111,7 @@ def fa():
                 click_image_fullscreen("assets/button/back.png", threshold=0.5)
                 break
 
-            time.sleep(0.5)
+            time.sleep(0.3)
 
         # tunggu dikit biar aman sebelum klik back
         time.sleep(1)
