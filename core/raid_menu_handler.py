@@ -134,7 +134,7 @@ def ensure_raid_tab():
             click_image_fullscreen("assets/button/button_ok.png", threshold=0.7)
 
             # 🔍 setelah klik OK summon, cek apakah ada popup muncul lagi
-            time.sleep(1.5)
+            time.sleep(2)
             popup_screen = screenshot()
 
             print(f"✅ Check Pop up setelah summon OK")
@@ -210,7 +210,7 @@ def ensure_solo_tab():
             click_image_fullscreen("assets/button/button_ok.png", threshold=0.7)
 
             # 🔍 setelah klik OK summon, cek popup
-            time.sleep(1.5)
+            time.sleep(2)
             popup_screen = screenshot()
 
             print("✅ Check Pop up setelah summon OK")

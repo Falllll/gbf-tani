@@ -82,7 +82,7 @@ def fa():
             time.sleep(0.3)
 
             # cek kalau tombol attack masih ada
-            if not match_template(screen, "assets/button/attack.png", threshold=0.5, preprocess=True):
+            if not match_template(screen, "assets/button/attack.png", threshold=0.4, preprocess=True):
                 print("✅ Tombol attack hilang, battle action selesai")
                 break
 
@@ -228,9 +228,9 @@ def manual():
 
         # 🔎 cek result battle setelah action
         screen = screenshot()
-        if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.4, preprocess=True) or
-            match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.4, preprocess=True) or
-            match_template(screen, "assets/page/exp_gained.png", threshold=0.4, preprocess=True)):
+        if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.5, preprocess=True) or
+            match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.5, preprocess=True) or
+            match_template(screen, "assets/page/exp_gained.png", threshold=0.5, preprocess=True)):
             print("✅ Battle selesai, result screen muncul")
             click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
             return True

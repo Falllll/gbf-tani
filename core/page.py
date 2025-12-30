@@ -10,6 +10,7 @@ def check_tab(mode: str) -> bool:
     if mode == "finder":
         raid_page()
     if mode == "solo":
+        attempt = 0
         while True:
             screen = screenshot()
 
@@ -31,9 +32,13 @@ def check_tab(mode: str) -> bool:
             if match_template(screen, page_senbok, preprocess=False):
                 print("✅ Sudah di halaman senbok")
                 return True
-            else:
-                print("❌ Harus ada di halaman solo")
-                time.sleep(2)
+            if match_template(screen, "assets/page/in_battle.png", preprocess=False):
+                print("✅ Sudah di halaman battle, jalankan auto")
+                fa()
+                return True
+            attempt += 1
+            print(f"❌ Harus ada di halaman solo (percobaan {attempt})")
+            time.sleep(2)
     if mode == "event":
         while True:
             screen = screenshot()
@@ -87,7 +92,7 @@ def raid_page():
                 attempt += 1
                 print(f"⚠️ Percobaan gagal ke-{attempt}/30")
 
-                if attempt >= 30:
+                if attempt >= 10:
                     print("🔄 30x gagal, klik bookmark untuk reset")
                     click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                     attempt = 0  # reset count
@@ -96,9 +101,9 @@ def raid_page():
             print("❌ Harus ada di halaman backup raid")
             time.sleep(2)
             attempt += 1
-            print(f"⚠️ Percobaan gagal ke-{attempt}/30")
+            print(f"⚠️ Percobaan gagal ke-{attempt}/10")
 
-            if attempt >= 30:
+            if attempt >= 10:
                 print("🔄 30x gagal, klik bookmark untuk reset")
                 click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                 attempt = 0  # reset count

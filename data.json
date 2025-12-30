@@ -12,7 +12,7 @@
         },
         {
             "id": 101,
-            "name": "Wings Of Terror",
+            "name": "Wings Of Terror / Proto Baha",
             "source": "assets/raids/raid_bahan.png",
             "mode": "v1",
             "grid": "",
@@ -352,7 +352,7 @@
         },
         {
             "id": 135,
-            "name": "Dark Rapture",
+            "name": "Dark Rapture / Faasan ",
             "source": "assets/raids/raid_faan.png",
             "mode": "v1",
             "grid": "",
