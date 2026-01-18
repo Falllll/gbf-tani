@@ -1,3 +1,4 @@
+import time
 from utils.screenshot import match_template, click_image_fullscreen
 
 # Konfigurasi popup umum
@@ -10,7 +11,7 @@ POPUPS = {
 PENDING_BATTLE_IMG = "assets/page/img_pending_battle.png"
 CAPTCHA_IMG = "assets/page/captcha.png"
 
-def check_common_popups(screen, threshold=0.6, debug=False):
+def check_common_popups(screen, threshold=0.5, debug=False):
     """
     Mengecek popup umum (raid ended, backup 3, battle full).
     Return nama popup jika terdeteksi, None jika tidak ada.
@@ -44,5 +45,6 @@ def handle_common_popup_action(name):
     """
     print(f"⚠️ Popup terdeteksi: {name}")
     click_image_fullscreen("assets/button/reload.png", threshold=0.7)
+    time.sleep(0.3)
     click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
     return False

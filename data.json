@@ -642,7 +642,7 @@
         },
         {
             "id": 164,
-            "name": "Martial Mastery Trial",
+            "name": "Martial Mastery Trial / Paragon",
             "source": "assets/raids/raid_martrial.png",
             "mode": "v2",
             "grid": "ex",
@@ -652,7 +652,7 @@
         },
         {
             "id": 165,
-            "name": "Esoteric Mastery Trial",
+            "name": "Esoteric Mastery Trial / Magia",
             "source": "assets/raids/raid_esotrial.png",
             "mode": "v2",
             "grid": "ex",
