@@ -11,7 +11,7 @@ POPUPS = {
 PENDING_BATTLE_IMG = "assets/page/img_pending_battle.png"
 CAPTCHA_IMG = "assets/page/captcha.png"
 
-def check_common_popups(screen, threshold=0.5, debug=False):
+def check_common_popups(screen, threshold=0.4, debug=False):
     """
     Mengecek popup umum (raid ended, backup 3, battle full).
     Return nama popup jika terdeteksi, None jika tidak ada.
