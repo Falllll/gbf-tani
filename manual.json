@@ -11,12 +11,7 @@
     "use_summon": ["summon_index"]
   },
   "steps": [
-      {
-        "action": "quick_summon"
-      },
-      {
-        "action": "auto"
-      },
+
       {
         "action": "attack"
       },

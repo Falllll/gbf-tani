@@ -1,6 +1,7 @@
 from utils.screenshot import screenshot, match_template, click_coords, click_image_fullscreen
 from utils.config import raid_id, raid_source
 import time
+from core.button import button_reload
 
 def handling_pending_battle(debug=False):
     print("⚠️ Handling pending battle...")
@@ -25,6 +26,7 @@ def handling_pending_battle(debug=False):
             return True
 
         cx, cy, score = coords
+        time.sleep(0.1)
         print(f"➡️ Klik raid pending (score={score:.3f})")
         click_coords(cx, cy)
         time.sleep(1)
@@ -44,5 +46,8 @@ def handling_pending_battle(debug=False):
 
         if not found_result:
             print("⚠️ Result battle tidak muncul setelah 10 detik, klik bookmark untuk reset")
+            button_reload()
+            time.sleep(1)
             click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
             time.sleep(1)
+            return False

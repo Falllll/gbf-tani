@@ -149,6 +149,8 @@ def ensure_raid_tab():
             for name, img in popups.items():
                 if match_template(popup_screen, img, threshold=0.7, preprocess=True, reject_dark=False, debug=True):
                     print(f"⚠️ Popup terdeteksi setelah summon OK: {name}")
+                    click_image_fullscreen("assets/button/reload.png", threshold=0.7)
+                    time.sleep(0.5)
                     click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                     return False  # ⬅️ balik ke loop utama
 

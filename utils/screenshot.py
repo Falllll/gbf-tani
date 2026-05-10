@@ -280,17 +280,19 @@ def click_summon_index(summon_index, debug=False):
     click_coords(x, y)
     return True
 
-def click_quick_summon_button(debug=False):
+def click_quick_summon_button(debug=True):
     """
     Klik tombol summon cepat (bisa quick_summon.png atau quick_summon2.png).
     """
+    print("[DEBUG] quick_summon button tidak ditemukan")
     paths = [
         "assets/button/quick_summon.png",
         "assets/button/quick_summon2.png"
     ]
-
+    print("[DEBUG] quick_summon button tidak ditemukan")
     for path in paths:
         result = click_image_fullscreen(path, threshold=0.8, debug=debug)
+        print("[DEBUG] asdasd")
         if result:  # ✅ kalau berhasil klik salah satu langsung return
             return result
 

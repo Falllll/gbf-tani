@@ -158,13 +158,11 @@ def manual():
             print("✅ Battle selesai, result screen muncul (awal step)")
             click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
             return True
-
         # cek tombol auto (skip untuk skill & summon)
         if action not in ["use_skill", "use_summon"]:
             if not wait_for_auto_button(timeout=20, debug=False):
                 continue
             time.sleep(1)
-
         # eksekusi action
         if action == "select_character":
             coords = click_image_fullscreen_with_coords(
@@ -196,6 +194,7 @@ def manual():
             click_summon_button(debug=False)
 
         elif action == "quick_summon":
+            print("✅ Quick Summon dipilih")
             click_quick_summon_button(debug=False)
             print("✅ Quick Summon berhasil")
             if refresh:

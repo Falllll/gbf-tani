@@ -22,6 +22,8 @@ def check_select_summon(image_path="assets/button/drop_items.png"):
             return True
         else:
             print("❌ Tidak berada di halaman select summon, balik bookmark...")
+            click_image_fullscreen("assets/button/reload.png", threshold=0.7)
+            time.sleep(0.3)
             click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
-            time.sleep(2)
+            time.sleep(1)
             return False

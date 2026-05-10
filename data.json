@@ -672,7 +672,7 @@
         },
         {
             "id": 167,
-            "name": "Super Ultimate Bahamut",
+            "name": "Super Ultimate Bahamut subaha",
             "source": "assets/raids/raid_subaha.png",
             "mode": "v2",
             "grid": "ex",
@@ -698,6 +698,26 @@
             "grid": "ex",
             "intro": true,
             "participant": 30,
+            "type": "impossible"
+        },
+        {
+            "id": 170,
+            "name": "Nihuyvintae",
+            "source": "assets/raids/raid_nihuyvintae.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 171,
+            "name": "Narophiridas",
+            "source": "assets/raids/raid_narophirmidas.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 18,
             "type": "impossible"
         }
     ]

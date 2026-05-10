@@ -1,6 +1,6 @@
 {
     "raid_id": 151,
-    "mode": "solo,finder,event,solo",
-    "setup": "fa,manual,fa"
+    "mode": "finder,finder,solo",
+    "setup": "manual,manual,fa"
 }
 

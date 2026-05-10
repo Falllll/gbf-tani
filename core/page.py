@@ -5,6 +5,7 @@ from utils.screenshot import *
 from core.finder import select_raid
 from core.battle import fa
 from core.popup import check_captcha
+from core.button import button_reload
 
 def check_tab(mode: str) -> bool:
     if mode == "finder":
@@ -17,7 +18,7 @@ def check_tab(mode: str) -> bool:
             if match_template(screen, page_backup_solo, preprocess=False):
                 print("✅ Sudah di halaman solo")
                 click_ok_button()
-                time.sleep(1)
+                time.sleep(0.5)
 
                 screen = screenshot()
                 if check_captcha(screen, debug=True):
@@ -38,6 +39,12 @@ def check_tab(mode: str) -> bool:
                 return True
             attempt += 1
             print(f"❌ Harus ada di halaman solo (percobaan {attempt})")
+            if attempt >= 10:
+                print("🔄 30x gagal, klik bookmark untuk reset")
+                button_reload()
+                time.sleep(1)
+                click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
+                attempt = 0
             time.sleep(2)
     if mode == "event":
         while True:
@@ -48,7 +55,9 @@ def check_tab(mode: str) -> bool:
                 return True
             else:
                 print("❌ Harus ada di halaman backup raid")
+                button_reload()
                 time.sleep(2)
+                click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
     return False
 
 def raid_page():
@@ -94,6 +103,8 @@ def raid_page():
 
                 if attempt >= 10:
                     print("🔄 30x gagal, klik bookmark untuk reset")
+                    button_reload()
+                    time.sleep(1)
                     click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                     attempt = 0  # reset count
 
@@ -105,5 +116,7 @@ def raid_page():
 
             if attempt >= 10:
                 print("🔄 30x gagal, klik bookmark untuk reset")
+                button_reload()
+                time.sleep(1)
                 click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
                 attempt = 0  # reset count

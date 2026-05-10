@@ -8,7 +8,7 @@ def main():
     print("ĐYs? Bot start...")
     first_mode = mode.split(",")[0].strip().lower()
     start_time = time.time()
-    max_runtime_seconds = 3 * 60 * 60
+    max_runtime_seconds = 3.5 * 60 * 60
 
     while True:  # Loop utama
         if time.time() - start_time >= max_runtime_seconds:
