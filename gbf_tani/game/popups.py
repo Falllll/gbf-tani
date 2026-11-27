@@ -5,6 +5,7 @@ from gbf_tani import assets
 from gbf_tani.game.buttons import reload_then_bookmark
 from gbf_tani.vision.capture import screenshot
 from gbf_tani.vision.matcher import match_template, match_any
+from gbf_tani.log import log
 
 # Popup umum setelah join raid (urutan dicek sesuai urutan dict)
 COMMON_POPUPS = {
@@ -24,7 +25,7 @@ def check_common_popups(screen, threshold=0.6):
 
 def handle_common_popup_action(name):
     """Popup umum → reload + bookmark, return False supaya caller ulang dari awal."""
-    print(f"⚠️ Popup terdeteksi: {name}")
+    log(f"⚠️ Popup terdeteksi: {name}")
     reload_then_bookmark(delay=0.3)
     return False
 
@@ -50,10 +51,10 @@ def check_select_summon():
     """
     screen = screenshot()
     if match_template(screen, assets.BTN_DROP_ITEMS, preprocess=False):
-        print("✅ Sudah di halaman select summon")
+        log("✅ Sudah di halaman select summon")
         return True
 
-    print("❌ Tidak berada di halaman select summon, balik bookmark...")
+    log("❌ Tidak berada di halaman select summon, balik bookmark...")
     reload_then_bookmark(delay=0.3)
     time.sleep(1)
     return False

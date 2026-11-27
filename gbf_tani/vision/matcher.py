@@ -4,6 +4,7 @@ from typing import NamedTuple
 import cv2
 
 from gbf_tani.vision.capture import screenshot
+from gbf_tani.log import log
 
 
 class Match(NamedTuple):
@@ -107,14 +108,14 @@ def find_image_box(template_path, threshold=0.8, debug=False):
     template = cv2.imread(template_path, cv2.IMREAD_COLOR)
     if template is None:
         if debug:
-            print(f"[DEBUG] Template {template_path} tidak ditemukan (file missing).")
+            log(f"[DEBUG] Template {template_path} tidak ditemukan (file missing).")
         return None
 
     res = cv2.matchTemplate(screen, template, cv2.TM_CCOEFF_NORMED)
     _, max_val, _, max_loc = cv2.minMaxLoc(res)
 
     if debug:
-        print(f"[DEBUG] match {template_path} score={max_val:.3f}")
+        log(f"[DEBUG] match {template_path} score={max_val:.3f}")
 
     if max_val >= threshold:
         h, w = template.shape[:2]

@@ -5,6 +5,7 @@ from gbf_tani import assets
 from gbf_tani.vision.capture import screenshot
 from gbf_tani.vision.matcher import match_template, find_image
 from gbf_tani.vision.mouse import click_image
+from gbf_tani.log import log
 
 
 # ---------------------------------------------------------------------------
@@ -14,7 +15,7 @@ from gbf_tani.vision.mouse import click_image
 def _click_if_visible(button, label, wait):
     """Cek tombol di screenshot baru (threshold 0.4), klik kalau ada, lalu tunggu."""
     if match_template(screenshot(), button, threshold=0.4, preprocess=True):
-        print(label)
+        log(label)
         click_image(button, threshold=0.4)
         time.sleep(wait)
         return True
@@ -73,7 +74,7 @@ def click_quick_summon_button(debug=True):
             return result
 
     if debug:
-        print("[DEBUG] quick_summon button tidak ditemukan")
+        log("[DEBUG] quick_summon button tidak ditemukan")
     return None
 
 
@@ -105,10 +106,10 @@ def wait_for_auto_button(timeout=30, interval=0.5, debug=False):
     while time.time() - start_time < timeout:
         if find_image(assets.BTN_AUTO, threshold=0.8, debug=debug):
             if debug:
-                print("✅ Tombol auto muncul!")
+                log("✅ Tombol auto muncul!")
             return True
         time.sleep(interval)
 
     if debug:
-        print("❌ Tombol auto tidak ketemu setelah timeout")
+        log("❌ Tombol auto tidak ketemu setelah timeout")
     return False

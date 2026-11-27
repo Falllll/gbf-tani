@@ -1,8 +1,7 @@
 # gbf_tani/flows/finder.py
-import sys
 import time
 
-from gbf_tani import assets
+from gbf_tani import assets, session
 from gbf_tani.config import raid_source, raid_name
 from gbf_tani.flows.battle import handle_battle
 from gbf_tani.flows.pending_battle import handling_pending_battle
@@ -18,6 +17,7 @@ from gbf_tani.game.popups import (
 from gbf_tani.vision.capture import screenshot
 from gbf_tani.vision.matcher import match_template
 from gbf_tani.vision.mouse import click_box, click_image
+from gbf_tani.log import log
 
 MAX_FAIL = 10
 
@@ -28,13 +28,13 @@ def select_raid():
     Return:
         True  -> battle selesai (result muncul)
         False -> gagal / popup, caller ulangi dari awal
-    CAPTCHA → program berhenti.
+    CAPTCHA → program berhenti (session.stop_for_captcha).
     """
     if not raid_source:
-        print("❌ raid_source tidak ditemukan di data.json/config.json")
+        log("❌ raid_source tidak ditemukan di data.json/config.json")
         return False
 
-    print(f"🔍 Mulai cari raid {raid_name}")
+    log(f"🔍 Mulai cari raid {raid_name}")
     fail_count = 0
 
     while True:
@@ -47,10 +47,10 @@ def select_raid():
                 return result
 
             fail_count += 1
-            print(f"⚠️ Raid tidak dikenali (percobaan {fail_count}/{MAX_FAIL}), ulangi…")
+            log(f"⚠️ Raid tidak dikenali (percobaan {fail_count}/{MAX_FAIL}), ulangi…")
             time.sleep(2)
             if fail_count >= MAX_FAIL:
-                print("❌ Raid gagal terdeteksi 10x → reload + bookmark.")
+                log("❌ Raid gagal terdeteksi 10x → reload + bookmark.")
                 button_reload()
                 time.sleep(0.5)
                 button_bookmark()
@@ -59,7 +59,7 @@ def select_raid():
 
         # --- Raid ketemu → join ---
         fail_count = 0
-        print("✅ Raid ditemukan, memilih raid…")
+        log("✅ Raid ditemukan, memilih raid…")
         time.sleep(0.5)
         click_box(coords.box)
         time.sleep(1)
@@ -72,7 +72,7 @@ def select_raid():
         if not check_select_summon():
             return False
 
-        print("✅ Klik OK")
+        log("✅ Klik OK")
         click_image(assets.BTN_OK, threshold=0.7)
         time.sleep(1.5)
 
@@ -84,7 +84,7 @@ def select_raid():
 
         # --- Battle ---
         if is_battle_result(screenshot(), threshold=0.6):
-            print("✅ Battle selesai, result screen muncul")
+            log("✅ Battle selesai, result screen muncul")
             click_bookmark()
             return True
 
@@ -100,27 +100,26 @@ def _check_join_popups(after_summon):
         "retry" -> (setelah summon) pending battle sudah di-handle, ulangi loop
     """
     popup_screen = screenshot()
-    print("✅ Check Pop up setelah summon OK" if after_summon else "✅ Check Pop up")
+    log("✅ Check Pop up setelah summon OK" if after_summon else "✅ Check Pop up")
 
     popup_name = check_common_popups(popup_screen)
     if popup_name:
         if after_summon:
-            print(f"⚠️ Popup terdeteksi setelah summon OK: {popup_name}")
+            log(f"⚠️ Popup terdeteksi setelah summon OK: {popup_name}")
             button_bookmark()
             return False
         return handle_common_popup_action(popup_name)
 
     if check_pending_battle(popup_screen):
         if after_summon:
-            print("⚠️ Pending battle setelah summon OK → menjalankan handler.")
+            log("⚠️ Pending battle setelah summon OK → menjalankan handler.")
             handling_pending_battle()
             return "retry"
-        print("⚠️ Pending battle terdeteksi → menjalankan handler.")
+        log("⚠️ Pending battle terdeteksi → menjalankan handler.")
         handling_pending_battle()
         return False
 
     if after_summon and check_captcha(popup_screen):
-        print("⚠️ CAPTCHA TERDETEKSI → hentikan program.")
-        sys.exit()
+        session.stop_for_captcha()
 
     return None

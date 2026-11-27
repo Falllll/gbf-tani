@@ -5,7 +5,9 @@ import time
 
 import pyautogui
 
+from gbf_tani import context
 from gbf_tani.vision.matcher import find_raw, find_image_box
+from gbf_tani.log import log
 
 # Jarak aman dari pinggir gambar, dalam persen ukuran gambar per sisi.
 # 0.25 → klik selalu jatuh di 50% area tengah (25% kiri/kanan/atas/bawah tidak pernah diklik).
@@ -45,8 +47,29 @@ def _random_axis(start, size, margin_ratio, min_margin):
 
 
 def click_coords(cx, cy, move_duration=0.1):
-    pyautogui.moveTo(cx, cy, duration=move_duration)
-    pyautogui.click()
+    """Gerakkan mouse ke (cx, cy) lalu klik. Koordinat relatif jendela akun (layar penuh di mode 1 akun)."""
+    if context.region() is None:
+        # --- 1 akun (perilaku lama, tidak diubah) ---
+        pyautogui.moveTo(cx, cy, duration=move_duration)
+        pyautogui.click()
+    else:
+        # --- multi akun: geser ke koordinat layar, antre pakai mouse ---
+        x, y = context.to_screen(cx, cy)
+        with context.INPUT_LOCK:
+            pyautogui.moveTo(x, y, duration=move_duration)
+            pyautogui.click()
+
+
+def click_instant(cx, cy):
+    """Klik langsung di (cx, cy) tanpa animasi gerak. Koordinat relatif jendela akun."""
+    if context.region() is None:
+        # --- 1 akun (perilaku lama, tidak diubah) ---
+        pyautogui.click(cx, cy)
+    else:
+        # --- multi akun ---
+        x, y = context.to_screen(cx, cy)
+        with context.INPUT_LOCK:
+            pyautogui.click(x, y)
 
 
 def click_box(box, move_duration=0.1):
@@ -63,7 +86,7 @@ def click_image(image_path, threshold=0.7, move_duration=0.1, debug=False):
     box, score = find_raw(image_path, threshold)
 
     if debug:
-        print(f"[DEBUG] click_image_fullscreen {os.path.basename(image_path)} score={score:.3f}")
+        log(f"[DEBUG] click_image_fullscreen {os.path.basename(image_path)} score={score:.3f}")
 
     if box is None:
         return False
@@ -81,13 +104,13 @@ def click_image_with_coords(template_path, threshold=0.8, debug=False):
     box = find_image_box(template_path, threshold=threshold, debug=debug)
     if not box:
         if debug:
-            print(f"[DEBUG] Gagal find {template_path}")
+            log(f"[DEBUG] Gagal find {template_path}")
         return None
 
     left, top, w, h = box
     center = (left + w // 2, top + h // 2)
     wait_before_click()
-    pyautogui.click(*random_point_in_box(box))
+    click_instant(*random_point_in_box(box))
     if debug:
-        print(f"[DEBUG] click_image_fullscreen_with_coords {template_path} di {center}")
+        log(f"[DEBUG] click_image_fullscreen_with_coords {template_path} di {center}")
     return center

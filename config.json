@@ -1,7 +1,13 @@
 {
     "raid_id": 163,
     "finder": false,
+
     "full_auto": true,
+    "fast_refresh": false,
+
+    "accounts": 1,
+
     "timer": true,
-    "timer_seconds": "1 * 1 * 1"
+    "timer_seconds": "2 * 60 * 60",
+    "humanizer": false
 }

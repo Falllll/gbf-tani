@@ -1,11 +1,11 @@
 # gbf_tani/game/party.py
 """Klik karakter, skill, dan summon. Offset pixel dikalibrasi ke layout layar sekarang."""
-import pyautogui
 
 from gbf_tani import assets
 from gbf_tani.vision.capture import screenshot
 from gbf_tani.vision.matcher import match_template
-from gbf_tani.vision.mouse import click_coords, click_image
+from gbf_tani.vision.mouse import click_coords, click_image, click_instant
+from gbf_tani.log import log
 
 # Offset X ikon skill pertama, relatif ke posisi karakter
 SKILL_BASE_OFFSET_X = {
@@ -35,9 +35,9 @@ def click_skill_relative(char_x, char_y, skill_index, position, debug=False):
     y = char_y + SKILL_BASE_OFFSET_Y
 
     if debug:
-        print(f"[DEBUG] Klik skill {skill_index} relatif di ({x},{y})")
+        log(f"[DEBUG] Klik skill {skill_index} relatif di ({x},{y})")
 
-    pyautogui.click(x, y)
+    click_instant(x, y)
     return (x, y)
 
 
@@ -51,7 +51,7 @@ def click_summon_index(summon_index, debug=False):
     loc = match_template(screenshot(), assets.PARTY_HEAL, threshold=0.4, return_coords=True)
     if not loc:
         if debug:
-            print("[DEBUG] Gagal menemukan anchor Heal button.")
+            log("[DEBUG] Gagal menemukan anchor Heal button.")
         return False
 
     hx, hy = loc.x, loc.y
@@ -59,7 +59,7 @@ def click_summon_index(summon_index, debug=False):
     y = hy + SUMMON_BASE_OFFSET_Y
 
     if debug:
-        print(f"[DEBUG] Klik summon {summon_index} di ({x},{y})")
+        log(f"[DEBUG] Klik summon {summon_index} di ({x},{y})")
 
     click_coords(x, y)
     return True

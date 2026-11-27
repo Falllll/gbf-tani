@@ -28,6 +28,17 @@ def _require_bool(key):
     return value
 
 
+def _require_positive_int(key):
+    """Ambil bilangan bulat ≥ 1 dari config.json (tanpa tanda kutip)."""
+    value = config_data.get(key)
+    if isinstance(value, bool) or not isinstance(value, int) or value < 1:
+        raise SystemExit(
+            f'❌ config.json: "{key}" harus angka bulat 1 atau lebih (tanpa tanda kutip), '
+            f"sekarang: {json.dumps(value)}"
+        )
+    return value
+
+
 # Angka, atau perkalian angka: "18000", "5 * 60 * 60", "1.5 * 60 * 60"
 _NUMBER = r"\d+(?:\.\d+)?"
 _PRODUCT_RE = re.compile(rf"^\s*{_NUMBER}(?:\s*\*\s*{_NUMBER})*\s*$")
@@ -58,11 +69,23 @@ def _require_seconds(key):
 # === config.json ===
 config_data = _load_json(CONFIG_FILE)
 
+# Urutan sama dengan config.json: raid → battle → akun → sesi
+
+# Raid & mode
 raid_id = config_data.get("raid_id")
-finder = _require_bool("finder")        # true → mode finder, false → mode solo
-full_auto = _require_bool("full_auto")  # true → full auto, false → manual (manual.json)
-timer = _require_bool("timer")          # true → berhenti setelah timer_seconds, false → jalan terus
+finder = _require_bool("finder")              # true → mode finder, false → mode solo
+
+# Battle
+full_auto = _require_bool("full_auto")        # true → full auto, false → manual (manual.json)
+fast_refresh = _require_bool("fast_refresh")  # FA saja: true → klik back 0.5–1 detik setelah auto, tanpa nunggu attack hilang
+
+# Akun
+accounts = _require_positive_int("accounts")  # jumlah akun = jumlah jendela browser game
+
+# Sesi
+timer = _require_bool("timer")                # true → berhenti setelah timer_seconds waktu jalan, false → jalan terus
 timer_seconds = _require_seconds("timer_seconds") if timer else None
+humanizer = _require_bool("humanizer")        # true → jalan 30–60 menit, istirahat 30–60 menit, diulang
 
 # Mode yang dipakai navigator
 mode = "finder" if finder else "solo"
