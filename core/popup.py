@@ -35,7 +35,7 @@ def check_captcha(screen, debug=False):
     Mengecek CAPTCHA.
     Return True jika CAPTCHA terdeteksi, False jika tidak.
     """
-    return match_template(screen, CAPTCHA_IMG, threshold=0.5, preprocess=True,
+    return match_template(screen, CAPTCHA_IMG, threshold=0.6, preprocess=True,
                           reject_dark=False, debug=debug)
 
 def handle_common_popup_action(name):

@@ -1,6 +1,7 @@
 # core/battle.py
 
 import time
+import random
 from utils.screenshot import *
 from utils.config import raid_intro, setup
 from core.button import button_reload
@@ -86,6 +87,10 @@ def fa():
                 print("✅ Tombol attack hilang, battle action selesai")
                 break
 
+            ## MATIIN KOMEN INI KALO MAU OTK ORO
+            # time.sleep(random.uniform(0.5, 1))
+            # click_image_fullscreen("assets/button/back.png", threshold=0.5)
+
             # cek kalau battle end muncul
             if match_template(screen, "assets/button/battle_end.png", threshold=0.5, preprocess=True):
                 print("⚠️ Battle End terdeteksi → klik bookmark dan keluar")
@@ -114,6 +119,7 @@ def fa():
             time.sleep(0.3)
 
         # tunggu dikit biar aman sebelum klik back
+        ### KOMEN INI KALO MAU OTK ORO ###
         time.sleep(1)
         print("🔙 Klik tombol back")
         click_image_fullscreen("assets/button/back.png", threshold=0.5)
@@ -137,9 +143,9 @@ def manual():
 
     # 🔎 Cek result battle sebelum mulai loop
     screen = screenshot()
-    if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.4, preprocess=True) or
-        match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.4, preprocess=True) or
-        match_template(screen, "assets/page/exp_gained.png", threshold=0.4, preprocess=True)):
+    if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.6, preprocess=True) or
+        match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.6, preprocess=True) or
+        match_template(screen, "assets/page/exp_gained.png", threshold=0.6, preprocess=True)):
         print("✅ Battle selesai, result screen muncul")
         click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
         return True
@@ -153,8 +159,8 @@ def manual():
 
         # 🔎 cek result battle di awal step
         screen = screenshot()
-        if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.4, preprocess=True) or
-            match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.4, preprocess=True)):
+        if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.6, preprocess=True) or
+            match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.6, preprocess=True)):
             print("✅ Battle selesai, result screen muncul (awal step)")
             click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
             return True
@@ -227,9 +233,9 @@ def manual():
 
         # 🔎 cek result battle setelah action
         screen = screenshot()
-        if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.5, preprocess=True) or
-            match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.5, preprocess=True) or
-            match_template(screen, "assets/page/exp_gained.png", threshold=0.5, preprocess=True)):
+        if (match_template(screen, "assets/page/img_result_battle.png", threshold=0.6, preprocess=True) or
+            match_template(screen, "assets/page/img_result_battle_2.png", threshold=0.6, preprocess=True) or
+            match_template(screen, "assets/page/exp_gained.png", threshold=0.6, preprocess=True)):
             print("✅ Battle selesai, result screen muncul")
             click_image_fullscreen("assets/button/bookmark.png", threshold=0.7)
             return True

@@ -2,3 +2,5 @@
 config.json
 manual.json
 manual2.json
+.venv/
+__pycache__/

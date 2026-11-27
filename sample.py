@@ -1,17 +1,14 @@
 import json
 import time
-from utils.screenshot import (
-    click_image_fullscreen,
-    click_skill_relative,
-    click_image_fullscreen_with_coords,
-    click_summon_index,
-    click_summon_button,
+from gbf_tani.game.buttons import (
     click_auto_button,
-    click_quick_summon_button,
-    click_back_button,
     click_ok_button,
-    wait_for_auto_button,  # ✅ fungsi baru
+    click_quick_summon_button,
+    click_reload_button,
+    wait_for_auto_button,
 )
+from gbf_tani.game.party import click_skill_relative, click_summon_button, click_summon_index
+from gbf_tani.vision.mouse import click_image, click_image_with_coords
 
 last_character_coords = None
 last_character_position = None  # ✅ inisialisasi dulu
@@ -40,7 +37,7 @@ def main():
 
         if action == "select_character":
             print(f"[DEBUG] Pilih karakter {target} (assets/party/{target}.png)")
-            coords = click_image_fullscreen_with_coords(
+            coords = click_image_with_coords(
                 f"assets/party/{target}.png", debug=True
             )
             if coords:
@@ -62,7 +59,7 @@ def main():
                 )
                 if refresh:
                     time.sleep(0.5)
-                    click_back_button(debug=True)
+                    click_reload_button(debug=True)
             else:
                 print("[DEBUG] Belum ada karakter yang dipilih → gak bisa klik skill")
 
@@ -75,14 +72,14 @@ def main():
             click_quick_summon_button(debug=True)
             if refresh:
                 time.sleep(0.5)
-                click_back_button(debug=True)
+                click_reload_button(debug=True)
 
         elif action == "auto":
             print("[DEBUG] Klik tombol auto")
             click_auto_button(debug=True)
             if refresh:
                 time.sleep(0.5)
-                click_back_button(debug=True)
+                click_reload_button(debug=True)
 
         elif action == "use_summon":
             summon_index = step.get("summon_index", 1)
@@ -92,14 +89,14 @@ def main():
             click_ok_button()
             if refresh:
                 time.sleep(0.5)
-                click_back_button(debug=True)
+                click_reload_button(debug=True)
 
         elif action == "attack":
             print("[DEBUG] Klik tombol attack")
-            click_image_fullscreen("assets/button/attack.png", debug=True)
+            click_image("assets/button/attack.png", debug=True)
             if refresh:
                 time.sleep(0.5)
-                click_back_button(debug=True)
+                click_reload_button(debug=True)
 
         # Delay kecil antar step (optional)
         time.sleep(1)

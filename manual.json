@@ -11,11 +11,15 @@
     "use_summon": ["summon_index"]
   },
   "steps": [
-
-      {
+          {
+        "action": "auto"
+      },
+          {
         "action": "attack"
       },
-      {
+              {
+        "action": "attack"
+      },          {
         "action": "attack"
       }
   ]

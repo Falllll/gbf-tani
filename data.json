@@ -702,6 +702,16 @@
         },
         {
             "id": 170,
+            "name": "Belmelvorlk",
+            "source": "assets/raids/raid_belmelvork.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 171,
             "name": "Nihuyvintae",
             "source": "assets/raids/raid_nihuyvintae.png",
             "mode": "v2",
@@ -711,9 +721,39 @@
             "type": "impossible"
         },
         {
-            "id": 171,
-            "name": "Narophiridas",
+            "id": 172,
+            "name": "Narophirmidas",
             "source": "assets/raids/raid_narophirmidas.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 173,
+            "name": "Macutanmacar",
+            "source": "assets/raids/raid_macutanmacar.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 174,
+            "name": "Papahlukruva",
+            "source": "assets/raids/raid_papahlukruva.png",
+            "mode": "v2",
+            "grid": "ex",
+            "intro": true,
+            "participant": 18,
+            "type": "impossible"
+        },
+        {
+            "id": 175,
+            "name": "Zamalvoch",
+            "source": "assets/raids/raid_zamalvoch.png",
             "mode": "v2",
             "grid": "ex",
             "intro": true,
