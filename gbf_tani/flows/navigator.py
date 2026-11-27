@@ -6,13 +6,7 @@ import time
 from gbf_tani import assets
 from gbf_tani.flows.battle import fa
 from gbf_tani.flows.finder import select_raid
-from gbf_tani.game.buttons import (
-    button_reload,
-    click_bookmark,
-    click_ok_button,
-    reset_to_bookmark,
-    wait_for_auto_button,
-)
+from gbf_tani.game.buttons import click_ok_button, reset_to_bookmark, wait_for_auto_button
 from gbf_tani.game.popups import check_captcha
 from gbf_tani.vision.capture import screenshot
 from gbf_tani.vision.matcher import match_template
@@ -22,14 +16,12 @@ MAX_ATTEMPT = 10
 
 
 def check_tab(mode: str) -> bool:
-    """Satu putaran bot sesuai mode: "finder", "solo", atau "event"."""
+    """Satu putaran bot sesuai mode: "finder" atau "solo"."""
     if mode == "finder":
         raid_page()
         return False
     if mode == "solo":
         return solo_page()
-    if mode == "event":
-        return event_page()
     return False
 
 
@@ -75,22 +67,6 @@ def _start_solo_battle():
         fa()
     else:
         print("⚠️ Tombol auto tidak muncul setelah klik OK")
-
-
-# ---------------------------------------------------------------------------
-# Mode event
-# ---------------------------------------------------------------------------
-
-def event_page():
-    while True:
-        if match_template(screenshot(), assets.PAGE_BACKUP_REQUESTS, preprocess=False):
-            print("✅ Sudah di halaman backup")
-            return True
-
-        print("❌ Harus ada di halaman backup raid")
-        button_reload()
-        time.sleep(2)
-        click_bookmark()
 
 
 # ---------------------------------------------------------------------------

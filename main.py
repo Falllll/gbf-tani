@@ -1,22 +1,20 @@
 import time
 
-from gbf_tani.config import mode
+from gbf_tani.config import mode, timer, timer_seconds
 from gbf_tani.flows.navigator import check_tab
-
-MAX_RUNTIME_SECONDS = 5 * 60 * 60  # 2 jam
-# MAX_RUNTIME_SECONDS = 12750
 
 
 def main():
     print("🚀 Bot start...")
-    first_mode = mode.split(",")[0].strip().lower()
+    if timer:
+        print(f"⏱️ Timer aktif: bot berhenti setelah {timer_seconds / 3600:g} jam")
     start_time = time.time()
 
     while True:
-        if time.time() - start_time >= MAX_RUNTIME_SECONDS:
-            print("Runtime limit reached (2 hours). Exiting.")
+        if timer and time.time() - start_time >= timer_seconds:
+            print(f"Runtime limit reached ({timer_seconds / 3600:g} hours). Exiting.")
             break
-        check_tab(first_mode)
+        check_tab(mode)
 
 
 if __name__ == "__main__":

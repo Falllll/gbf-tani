@@ -54,7 +54,7 @@ def click_summon_index(summon_index, debug=False):
             print("[DEBUG] Gagal menemukan anchor Heal button.")
         return False
 
-    hx, hy, _ = loc
+    hx, hy = loc.x, loc.y
     x = hx + SUMMON_BASE_OFFSET_X + (summon_index - 1) * SUMMON_GAP
     y = hy + SUMMON_BASE_OFFSET_Y
 

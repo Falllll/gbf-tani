@@ -57,13 +57,43 @@ cd gbf-tani
 pip install -r requirements.txt
 ```
 
+Then create your own `config.json` from the example:
+
+```bash
+cp config.example.json config.json
+```
+
 ## Configuration
 
 | File | Purpose |
 |------|---------|
-| `config.json` | Runtime settings — match threshold, delays, run duration, action mappings |
+| `config.json` | Which raid to run and how (see below) |
 | `data.json` | State definitions and their associated reference images |
 | `assets/` | Reference images used for template matching |
+
+### `config.json`
+
+```json
+{
+    "raid_id": 163,
+    "finder": false,
+    "full_auto": true,
+    "timer": true,
+    "timer_seconds": "1 * 60 * 60"
+}
+```
+
+| Key | Value | Meaning |
+|-----|-------|---------|
+| `raid_id` | number | Raid `id` from `data.json` |
+| `finder` | `true` / `false` | `true` = join raids from the Finder tab, `false` = solo |
+| `full_auto` | `true` / `false` | `true` = full auto, `false` = run the steps in `manual.json` (start from `example.json`) |
+| `timer` | `true` / `false` | `true` = stop automatically after `timer_seconds`, `false` = run until stopped manually |
+| `timer_seconds` | number or `"a * b * c"` | Run time in seconds when `timer` is `true`, e.g. `3600` or `"1 * 60 * 60"` (1 hour) |
+
+`finder`, `full_auto` and `timer` must be written without quotes. JSON cannot hold a formula,
+so a calculated `timer_seconds` must be quoted (`"1 * 60 * 60"`); only numbers and `*` are
+accepted. If any key is missing or invalid, the bot stops at startup and says which key is wrong.
 
 Reference images must be captured at the same resolution and scaling as the target application.
 Template matching is not scale-invariant, so a mismatched display scale is the most common
@@ -82,8 +112,8 @@ configured duration elapses.
 
 ```
 gbf-tani/
-├── main.py                  # entry point (main loop + runtime limit)
-├── config.json              # raid_id, mode (finder/solo/event), setup (fa/manual)
+├── main.py                  # entry point (main loop + optional timer)
+├── config.json              # raid_id, finder, full_auto, timer (copy from config.example.json)
 ├── data.json                # raid list + reference image per raid
 ├── manual.json              # step list for manual mode
 ├── assets/                  # reference images (buttons, pages, party, raids)

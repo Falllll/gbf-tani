@@ -17,7 +17,7 @@ from gbf_tani.game.popups import (
 )
 from gbf_tani.vision.capture import screenshot
 from gbf_tani.vision.matcher import match_template
-from gbf_tani.vision.mouse import click_coords, click_image
+from gbf_tani.vision.mouse import click_box, click_image
 
 MAX_FAIL = 10
 
@@ -59,10 +59,9 @@ def select_raid():
 
         # --- Raid ketemu → join ---
         fail_count = 0
-        cx, cy, _ = coords
         print("✅ Raid ditemukan, memilih raid…")
         time.sleep(0.5)
-        click_coords(cx, cy)
+        click_box(coords.box)
         time.sleep(1)
 
         if (result := _check_join_popups(after_summon=False)) is not None:

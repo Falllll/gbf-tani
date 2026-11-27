@@ -2,7 +2,7 @@
 import time
 
 from gbf_tani import assets
-from gbf_tani.config import raid_intro, setup
+from gbf_tani.config import raid_intro, full_auto
 from gbf_tani.flows.manual import manual
 from gbf_tani.game.buttons import button_reload, click_bookmark, click_back
 from gbf_tani.game.popups import is_battle_result
@@ -14,18 +14,15 @@ ATTACK_WAIT_TIMEOUT = 60  # detik
 
 
 def handle_battle():
-    """Masuk battle → jalankan setup sesuai config ("fa" atau "manual")."""
-    setup_battle = setup.split(",")[0].strip().lower()
-
+    """Masuk battle → full auto atau manual sesuai config ("full_auto")."""
     time.sleep(0.5)
     if raid_intro:
         button_reload()
 
-    if setup_battle == "manual":
-        manual()
-
-    if setup_battle == "fa":
+    if full_auto:
         fa()
+    else:
+        manual()
 
 
 def fa():

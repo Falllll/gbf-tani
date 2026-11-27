@@ -7,7 +7,7 @@ from gbf_tani.game.buttons import button_reload, click_bookmark, click_back
 from gbf_tani.game.popups import is_battle_result
 from gbf_tani.vision.capture import screenshot
 from gbf_tani.vision.matcher import match_template
-from gbf_tani.vision.mouse import click_coords, click_image
+from gbf_tani.vision.mouse import click_box, click_image
 
 RESULT_WAIT_SECONDS = 10
 
@@ -30,10 +30,9 @@ def handling_pending_battle():
             click_bookmark()
             return True
 
-        cx, cy, score = coords
         time.sleep(0.1)
-        print(f"➡️ Klik raid pending (score={score:.3f})")
-        click_coords(cx, cy)
+        print(f"➡️ Klik raid pending (score={coords.score:.3f})")
+        click_box(coords.box)
         time.sleep(1)
 
         if not _wait_result_and_back():

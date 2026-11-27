@@ -1,7 +1,17 @@
 # gbf_tani/vision/matcher.py
+from typing import NamedTuple
+
 import cv2
 
 from gbf_tani.vision.capture import screenshot
+
+
+class Match(NamedTuple):
+    """Hasil match: titik tengah, skor, dan kotak area template (left, top, width, height)."""
+    x: int
+    y: int
+    score: float
+    box: tuple
 
 
 def _binarize(gray):
@@ -19,7 +29,7 @@ def match_template(screen, template_path, threshold=0.7, return_coords=False, pr
     Cari template di screen (BGR).
     Return:
         return_coords=False → True/False
-        return_coords=True  → (cx, cy, score) atau False
+        return_coords=True  → Match(x, y, score, box) atau False
     """
     template = cv2.imread(template_path, cv2.IMREAD_GRAYSCALE)
     if template is None:
@@ -40,12 +50,11 @@ def match_template(screen, template_path, threshold=0.7, return_coords=False, pr
     if max_val < threshold:
         return False
 
-    h, w = template.shape
-    cx = max_loc[0] + w // 2
-    cy = max_loc[1] + h // 2
-
     if return_coords:
-        return (cx, cy, max_val)
+        h, w = template.shape
+        cx = max_loc[0] + w // 2
+        cy = max_loc[1] + h // 2
+        return Match(cx, cy, max_val, (max_loc[0], max_loc[1], w, h))
     return True
 
 
@@ -60,7 +69,7 @@ def match_any(screen, template_paths, threshold=0.7, preprocess=True):
 def find_raw(template_path, threshold):
     """
     Screenshot baru + cocokkan grayscale mentah (tanpa preprocess).
-    Return (cx, cy, score) kalau lolos threshold, None kalau tidak.
+    Return (box, score). box = (left, top, width, height), atau None kalau tidak lolos threshold.
     """
     screen = screenshot()
     gray_screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
@@ -76,7 +85,7 @@ def find_raw(template_path, threshold):
         return None, max_val
 
     th, tw = template.shape[:2]
-    return (max_loc[0] + tw // 2, max_loc[1] + th // 2), max_val
+    return (max_loc[0], max_loc[1], tw, th), max_val
 
 
 def find_image(template_path, threshold=0.8, debug=False):
@@ -84,6 +93,15 @@ def find_image(template_path, threshold=0.8, debug=False):
     Cari template (warna) di screenshot layar penuh.
     Return (x, y) koordinat tengah kalau ketemu, None kalau tidak.
     """
+    box = find_image_box(template_path, threshold=threshold, debug=debug)
+    if box is None:
+        return None
+    left, top, w, h = box
+    return (left + w // 2, top + h // 2)
+
+
+def find_image_box(template_path, threshold=0.8, debug=False):
+    """Sama seperti find_image, tapi return kotak (left, top, width, height)."""
     screen = screenshot()
 
     template = cv2.imread(template_path, cv2.IMREAD_COLOR)
@@ -100,5 +118,5 @@ def find_image(template_path, threshold=0.8, debug=False):
 
     if max_val >= threshold:
         h, w = template.shape[:2]
-        return (max_loc[0] + w // 2, max_loc[1] + h // 2)
+        return (max_loc[0], max_loc[1], w, h)
     return None

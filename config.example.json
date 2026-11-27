@@ -1,0 +1,7 @@
+{
+    "raid_id": 163,
+    "finder": false,
+    "full_auto": true,
+    "timer": true,
+    "timer_seconds": "1 * 60 * 60"
+}
